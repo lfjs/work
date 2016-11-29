@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/bootstrap-combined.min.css"/>
+    <link rel="stylesheet" href="css/index.css"/>
+    <style></style>
+</head>
+<body>
+<br/>
+
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span12">
+
+
+            <blockquote class="panel-primary">
+                <p>入库登记</p>
+            </blockquote>
+            <div class="alert alert-gray">
+                请完善以下信息,方便我们更好的为您服务
+            </div>
+
+
+            <form class="form-horizontal">
+
+                <h4>商品展示信息</h4>
+                <hr/>
+
+                <div class="control-group">
+                    <label class="control-label">商品图片</label>
+
+                    <div class="controls">
+                        <input placeholder="点击上传图片" readonly type="text">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">商品名称</label>
+
+                    <div class="controls">
+                        <input placeholder="商品名称" type="text">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">商品编号</label>
+
+                    <div class="controls">
+                        <input placeholder="商品编号" type="text">
+                    </div>
+                </div>
+            </form>
+            <form class="form-horizontal">
+                <h4>商品详细信息</h4>
+                <hr/>
+
+                <div class="control-group">
+                    <label class="control-label">类别</label>
+                    <div class="controls">
+                        <div class="">
+                            <select class="form-control select-w ng-pristine ng-valid">
+                                <option value="0" selected="selected">请选择类别</option>
+                                <option value="0">弹药/耗材</option>
+                                <option value="1">抛射/发射器具</option>
+                                <option value="2">通讯器材</option>
+                                <option value="3">载具</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">净重</label>
+
+                    <div class="controls">
+                        <input placeholder="Kg/g" type="password">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">密度</label>
+
+                    <div class="controls">
+                        <input placeholder="Kg/m^3" type="password">
+                    </div>
+                </div>
+            </form>
+            <form class="form-horizontal">
+                <h4>供应商信息</h4>
+                <hr/>
+
+                <div class="control-group">
+                    <label class="control-label">国家/地区</label>
+
+                    <div class="controls">
+                        <input class="disabled" placeholder="国家/地区" type="text">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">联系方式</label>
+
+                    <div class="controls">
+                        <input placeholder="联系方式" type="text">
+                    </div>
+                </div>
+            </form>
+            <table class="table">
+                <tbody>
+                <tr>
+                    <td></td>
+                    <td>
+                        <button class="btn btn-primary">提交</button>
+                    </td>
+                    <td></td>
+                </tr>
+                </tbody>
+            </table>
+
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
