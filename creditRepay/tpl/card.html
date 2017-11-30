@@ -1,0 +1,21 @@
+<div class="creditCard box_shadow">
+	<div class="cardInfo a bg_blue">
+		<img ng-src="img/{{matchLogo(bank.bank_name)}}logo.png" alt=""/>
+		<span class="a">{{bank.bank_name}} | 尾号{{bank.bankcardnum|last4}}</span>
+		<span class="b">{{bank.realname|hideMiddleName}}</span>
+	</div>
+	<div class="cardInfo b">
+		<table>
+			<tr>
+				<th ng-if="false">计划额度</th>
+				<th>账单日</th>
+				<th>还款日</th>
+			</tr>
+			<tr>
+				<td ng-if="false">3000</td>
+				<td>{{bank.date_bill}}</td>
+				<td>{{bank.date_repay}}</td>
+			</tr>
+		</table>
+	</div>
+</div>

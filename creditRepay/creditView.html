@@ -1,0 +1,32 @@
+
+
+<ion-view view-title="预览计划">
+	<ion-content class=" bg_f4">
+
+		<div ng-repeat="x in creditView.repay.detail_format" class="planItem">
+			<table>
+				<tr>
+					<td class="text_bold">{{x.amount}}[{{x.type==1?'消费':'还款'}}]</td>
+					<td class="text_bold text-right">未付款</td>
+				</tr>
+				<tr>
+					<td>商品：{{x.order_info}}</td>
+					<td class="text-right">{{x.datetime}}</td>
+				</tr>
+			</table>
+		</div>
+
+		<div style="    margin: 24px;line-height: 1.5;">
+			<p class="text_bold">手续费：{{creditView.repay.repay.fee_formula_detail}}</p>
+			<p class="">注：{{creditView.repay.repay.fee_formula}}</p>
+		</div>
+		<div class="table">
+			<div class="cell" style="width: 50%;padding: 0 12px;">
+				<button class="button button-light button-block" ui-sref="creditNew({'cardId':banks[bankIndex].id,'index':bankIndex})">返回修改计划</button>
+			</div>
+			<div class="cell" style="padding: 0 12px;">
+				<button ng-click="launchCreditNew()" class="button button-positive button-block">确认提交</button>
+			</div>
+		</div>
+	</ion-content>
+</ion-view>

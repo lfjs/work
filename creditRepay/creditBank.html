@@ -1,0 +1,32 @@
+
+
+<ion-view view-title="{{banks[bankIndex].bank_name}}">
+	<ion-content class="padding bg_f4">
+
+
+		<div bank='banks[bankIndex]' card-directive></div>
+		<!--<div>{{bankIndex=$stateParams.index}}</div>-->
+
+		<div bankid='banks[bankIndex].id' index='bankIndex' plan="repay_latest" token="token" plan-directive></div>
+
+		<br/><br/><br/><br/><br/><br/>
+	</ion-content>
+	<div class="tabs tabs-icon-top">
+		<a class="tab-item" ui-sref="creditPrev({'cardId':banks[bankIndex].id,'index':bankIndex})">
+			<img src="img/wangqijihua.png" alt=""/>
+			往期计划
+		</a>
+		<a class="tab-item" ui-sref="creditEdit({'cardId':banks[bankIndex].id,'index':bankIndex})">
+			<img src="img/kapianxiugai.png" alt=""/>
+			卡片修改
+		</a>
+		<a class="tab-item" ng-click="unbindCredit()">
+			<img src="img/kapianjiebang.png" alt=""/>
+			卡片解绑
+		</a>
+		<a class="tab-item">
+			<img src="img/jihuachongqi.png" alt=""/>
+			计划重启
+		</a>
+	</div>
+</ion-view>

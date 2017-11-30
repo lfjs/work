@@ -1,0 +1,36 @@
+
+
+<ion-view view-title="修改登录密码">
+	<ion-content class="padding">
+		<div class="login content has-header">
+
+			<div class="list">
+				<div style="width: 32%;float: right;margin-top: -1px;">
+					<button ng-click="changePswVerify()" style="margin: 0" class="button button-block button-light">验证</button>
+
+				</div>
+				<label style="width: 64%" class="item item-input">
+					<input ng-model="changePsw.phone" type="text" placeholder="手机号">
+				</label>
+			</div>
+			<div class="list">
+				<label class="item item-input">
+					<input ng-model="changePsw.verify_code" type="text" placeholder="验证码">
+				</label>
+			</div>
+			<div class="list">
+				<label class="item item-input">
+					<input ng-model="changePsw.password" type="password" placeholder="6-16位登录密码">
+				</label>
+			</div>
+			<div class="list">
+				<label class="item item-input">
+					<input ng-model="changePsw.password_confirm" type="password" placeholder="确认登录密码">
+				</label>
+			</div>
+			<div class="">
+				<button ng-click="launchChangePsw()" class="button button-block button-positive">确定修改</button>
+			</div>
+		</div>
+	</ion-content>
+</ion-view>

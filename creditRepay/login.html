@@ -1,0 +1,23 @@
+
+
+<ion-view view-title="登录">
+	<ion-content class="padding bg_bottom" style="background-image: url('img/zhuce_bg.png')">
+		<div class="login content has-header">
+			<div class="list">
+				<label class="item item-input {{login.phone?'':fillRequired}}">
+					<input ng-model="login.phone" type="text" placeholder="手机号">
+				</label>
+			</div>
+			<div class="list">
+				<label class="item item-input {{login.password?'':fillRequired}}">
+					<input ng-model="login.password" type="password" placeholder="6-16位登录密码">
+				</label>
+			</div>
+			<div class="">
+				<button ng-click="launchLogin()" class="button button-block button-positive">登录</button>
+				<button class="button button-block button-light" ui-sref="reg">注册</button>
+				<button ui-sref="changePsw" class="button button-block button-clear button-positive">忘记密码</button>
+			</div>
+		</div>
+	</ion-content>
+</ion-view>

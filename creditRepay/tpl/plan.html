@@ -1,0 +1,74 @@
+<div>
+	<!--<div>{{[token]}}</div>-->
+	<!--<div>{{plan.repay?plan.repay.status:0}}</div>-->
+	<!--<div>{{plan.repay.time_create}}</div>-->
+	<!--<div>{{plan.repay}}</div>-->
+	<!--<div ng-if="plan.repay&&bank.plan.status" class="creditPlanA creditPlanB text-center box_shadow">-->
+	<div ng-if="plan.repay&&(plan.repay.status==2||plan.repay.status=='处理中')" class="creditPlanA creditPlanB text-center box_shadow">
+		<img class="chainLeft" src="img/lianjie.png" alt=""/>
+		<img class="chainRight" src="img/lianjie.png" alt=""/>
+
+		<div class="a">进行中</div>
+		<p class="a text_bold text-left">{{plan.repay.time_create*1000|date:'yyyy-MM-dd'}}</p>
+		<p class="a text-left">计划配置： {{plan.repay.days}} 天 {{plan.repay.times_consume}} 笔</p>
+		<p class="a text-left">手续费：{{plan.repay.fee}}</p>
+		<hr/>
+		<table>
+			<tr>
+				<td>
+					<div>还款：<span style="color: #0091fe">{{plan.repay.times_repay_finish}}</span>/{{plan.repay.times_repay}}</div>
+				</td>
+				<td>
+					<div>消费：<span style="color: #0091fe">{{plan.repay.times_consume_finish}}</span>/{{plan.repay.times_consume}}</div>
+				</td>
+				<td>
+					<div>进度：<span style="color: #0091fe">{{plan.repay.progress*100+'%'}}</span></div>
+				</td>
+			</tr>
+		</table>
+		<div class="progressBox clearfix">
+			<div style="{{'width:'+plan.repay.progress*100+'%'}}" class="progress bg_blue"></div>
+		</div>
+	</div>
+	<!--<div ng-if="plan.repay&&!bank.plan.status" class="creditPlanA text-center box_shadow">-->
+	<!--<div ng-if="plan.repay&&plan.repay.status==1" class="creditPlanA text-center box_shadow">-->
+	<div ng-if="plan.repay&&plan.repay.status==1" class="creditPlanA text-center box_shadow">
+		<img class="chainLeft" src="img/lianjie.png" alt=""/>
+		<img class="chainRight" src="img/lianjie.png" alt=""/>
+		<div class="a">未执行</div>
+		<p class="a text_bold text-left">{{plan.repay.time_create*1000|date:'yyyy-MM-dd'}}</p>
+		<p class="a text-left">计划配置： {{plan.repay.days}} 天 {{plan.repay.times_consume}} 笔</p>
+		<p class="a text-left">手续费：{{plan.repay.fee}}</p>
+		<hr/>
+		<table style="margin-top: 14px">
+			<tr>
+				<td ui-sref="creditNew">
+					<img style="width: 32px" class="b" src="img/xiugaijihua.png" alt=""/>
+					<div style="margin-top: 10px;color: #333">修改计划</div>
+				</td>
+				<td ng-click="launchPay()">
+					<img style="width: 32px" class="b" src="img/chongzhizhixing.png" alt=""/>
+					<div style="margin-top: 10px;color: #333">充值执行</div>
+				</td>
+				<td ng-click="cancelPlan()">
+					<img style="width: 32px" class="b" src="img/quxiaojihua.png" alt=""/>
+					<div style="margin-top: 10px;color: #333">取消计划</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div>
+
+	</div>
+
+	<div ng-if="!plan.repay" class="creditPlan text-center box_shadow">
+
+		<img class="chainLeft" src="img/lianjie.png" alt=""/>
+		<img class="chainRight" src="img/lianjie.png" alt=""/>
+		<img class="a" src="img/img_zanwushuju.png" alt=""/>
+		<p class="a text_bold">暂无数据</p>
+		<p class="b">您还没有制定还款计划</p>
+		<button style="min-width: 150px" class="button button-positive" ui-sref="creditNew({'cardId':bankid,'index':index})">去制定</button>
+
+	</div>
+</div>

@@ -1,0 +1,15 @@
+
+
+<ion-view view-title="往期计划">
+	<ion-content class="padding">
+
+		<!--<div bank-name='$stateParams.name' card-directive></div>-->
+		<!--<div plan-directive></div>-->
+
+		<div bank='banks[bankIndex]' card-directive></div>
+		<!--<div>{{bankIndex=$stateParams.index}}</div>-->
+
+		<div ng-repeat="x in creditPrev.list" bankid='banks[bankIndex].id' index='bankIndex' plan="{repay:x}" plan-directive></div>
+
+	</ion-content>
+</ion-view>

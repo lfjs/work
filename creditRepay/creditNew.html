@@ -1,0 +1,56 @@
+
+
+<ion-view view-title="制定计划">
+	<ion-content class=" bg_f4">
+		<!--<div style="margin: 16px" bank-name='$stateParams.name' card-directive></div>-->
+		<div style="margin: 16px" bank='banks[$stateParams.index]' card-directive></div>
+
+		<div hidden>{{creditNew.card_id = banks[$stateParams.index].id}}</div>
+		<div class="planBox">
+			<div class="list">
+				<label style="border: 0" class="item item-input">
+					<span class="input-label text_bold">计划金额</span>
+					<input ng-model="creditNew.amount" type="text" placeholder="请输入计划金额">
+				</label>
+				<label style="border: 0" class="item item-input">
+					<span class="input-label text_bold">计划本金</span>
+					<input ng-model="creditNew.amount_principal" type="text" placeholder="请输入计划本金">
+				</label>
+				<label style="border: 0" class="item item-input">
+					<span class="input-label ">计划本金不能低于计划金额的5%</span>
+				</label>
+			</div>
+			<p style="margin: 0"></p>
+		</div>
+		<div class="planBox">
+			<button ng-click="aboutMode()" style="border: 0;float: right;color: #2da9ff;" class="button button-light btnSmall right"><i class="icon ion-ios-help-outline"></i></button>
+
+			<p class="text_bold">消费模式：</p>
+
+			<div class="table text-center">
+				<div class="cell" ng-repeat="x in [1,2,3]" ng-click="">
+					<button ng-click="switchMode(x)" class="button btnSmall {{creditNew.mode == x?'button-positive':'button-light'}}">消费1-{{x}}</button>
+				</div>
+			</div>
+		</div>
+		<div class="planBox">
+
+			<p style="padding: 0;border: 0" ng-click="showDatepicker()" class="text_bold item">选择还款日期：
+				<i style="float: right" class="icon ion-chevron-up {{onezoneDatepicker.showDatepicker?'ro_0':'ro_180'}}"></i>
+			</p>
+			<div hidden>{{creditNew.date}}</div>
+			<div>
+				<span class="dateSelected" ng-click="dateSelectedRemove(x)" ng-repeat="x in creditNew.date.split(',')">{{x|dateCn}}</span>
+			</div>
+			<onezone-datepicker datepicker-object="onezoneDatepicker">
+				<!--<button class="button button-block button-outline button-positive show-onezone-datepicker">-->
+					<!--{{onezoneDatepicker.highlights}}-->
+				<!--</button>-->
+			</onezone-datepicker>
+		</div>
+		<div style="margin: 24px">
+			<button ng-click="launchCreditView()" class="button button-positive button-block bg_blue">预览计划</button>
+
+		</div>
+	</ion-content>
+</ion-view>

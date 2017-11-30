@@ -1,0 +1,41 @@
+<ion-view view-title="注册">
+	<ion-content class="padding bg_bottom" style="background-image: url('img/zhuce_bg.png')">
+		<div class="login content has-header">
+			<!--<form ng-submit="myFunc()" action="http://www.aiyongka.cn/mobile/index.php/site/register" method="post" >-->
+			<form>
+			<div class="list">
+				<div style="width: 32%;float: right;margin-top: -1px;">
+					<button ng-click="regVerify()" style="margin: 0" class="button button-block button-light">验证</button>
+				</div>
+				<label style="width: 64%" class="item item-input">
+					<input ng-model="reg.phone" type="text" placeholder="手机号">
+				</label>
+			</div>
+			<div class="list">
+				<label class="item item-input">
+					<input ng-model="reg.verify_code" type="text" placeholder="验证码">
+				</label>
+			</div>
+			<div class="list">
+				<label class="item item-input">
+					<input ng-model="reg.password" type="password" placeholder="6-16位登录密码">
+				</label>
+			</div>
+			<div class="list">
+				<label class="item item-input">
+					<input ng-model="reg.refer_phone" type="text" placeholder="推荐人推荐码">
+				</label>
+			</div>
+			<!--<div class="list">-->
+				<!--<label class="item item-input">-->
+					<!--<input type="text" placeholder="激活码" >-->
+				<!--</label>-->
+			<!--</div>-->
+			<div class="">
+				<!--<button ng-click="launchReg()" class="button button-block button-positive">注册</button>-->
+				<button ng-click="launchReg()" class="button button-block button-positive">注册</button>
+			</div>
+			</form>
+		</div>
+	</ion-content>
+</ion-view>

@@ -1,0 +1,444 @@
+*{
+	padding: 0;
+	margin: 0;
+	line-height: 1;
+}
+body{
+	font-size: 14px;
+	color: #888;
+}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,form,input,p,th,td,s,input, button, select, textarea{
+	font-family:"微软雅黑",Tahoma,sans-serif
+}
+.login button{
+	padding: 2px 0 2px 0;
+}
+.item.item-icon-left>span{
+
+	padding-left: 34px;
+
+}
+.popup .button.button-positive{
+	/*background-color: transparent!important;*/
+	/*color: #333!important;*/
+}
+.login .item-input{
+	padding: 2px 0 2px 16px;
+	border-radius: 5000px;
+	background-color: #f6f6f6;
+}
+.dateSelected{
+
+	background-color: #c2e4ff;
+	color: #3391ff;
+	padding: 6px;
+	border-radius: 5px;
+	margin: 5px;
+	/*line-height: 3;*/
+	display: inline-block;
+}
+.fillRequired{
+	box-shadow: 0 0 20px -5px red!important;
+	border-color: #fa8a8a!important;
+	/*background-color: red!important;*/
+	transition:  .2s;
+	-moz-transition:  .2s; /* Firefox 4 */
+	-webkit-transition:  .2s; /* Safari 和 Chrome */
+	-o-transition:  .2s; /* Opera */
+
+}
+i.icon svg{
+	height: 24px;
+}
+.ro_180{
+	transform:rotate(180deg);
+	-ms-transform:rotate(180deg); 	/* IE 9 */
+	-moz-transform:rotate(180deg); 	/* Firefox */
+	-webkit-transform:rotate(180deg); /* Safari 和 Chrome */
+	-o-transform:rotate(180deg); 	/* Opera */
+	transition:  .2s;
+	-moz-transition:  .2s; /* Firefox 4 */
+	-webkit-transition:  .2s; /* Safari 和 Chrome */
+	-o-transition:  .2s; /* Opera */
+}
+.ro_0{
+	transform:rotate(0deg);
+	-ms-transform:rotate(0deg); 	/* IE 9 */
+	-moz-transform:rotate(0deg); 	/* Firefox */
+	-webkit-transform:rotate(0deg); /* Safari 和 Chrome */
+	-o-transform:rotate(0deg); 	/* Opera */
+	transition:  .2s;
+	-moz-transition:  .2s; /* Firefox 4 */
+	-webkit-transition:  .2s; /* Safari 和 Chrome */
+	-o-transition:  .2s; /* Opera */
+}
+.bg_bottom{
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: 0 100%;
+}
+.padding{
+	padding: 16px;
+}
+.action-sheet-options{
+	background-color: #fff;
+}
+.action-sheet-group .button{
+	border: 0!important;
+}
+.btnSlideCon{
+	padding: 15px;
+}
+.btnSlide{
+	border-radius: 5000px!important;
+}
+.button .icon{
+	color: #099aff;
+}
+.button.btnSmall{
+	min-height: 0;
+	line-height: 28px;
+	min-width: 90px;
+}
+.bar{
+}
+.button{
+	border-radius: 5000px;
+	min-height: 0;
+	line-height: 34px;
+}
+.button.button-positive{
+	background-color: #2da9ff;
+}
+.button.button-light{
+	color: #7c7c7c;
+	border: 1px solid #d2d2d2;
+}
+.bg_f4{
+	background-color: #f4f4f4;
+}
+table{
+	width: 100%;
+}
+.box_shadow{
+	box-shadow: 0px 2px 9px 0px #c8e1f9;
+}
+.text_bold{
+	color: #555;
+	font-weight: bold;
+	font-size: 115%;
+}
+.cell{
+	display: table-cell;
+}
+.table{
+	display: table;
+	width: 100%;
+}
+.popup-container .popup{
+	width: 82%;
+}
+hr{
+	border: 0;
+	border-bottom: 1px solid #e1e1e1;
+}
+.progress{
+	float: left;
+	width: 70%;
+	background-color: red;
+	border-radius: 500px;
+	min-height: 10px;
+}
+.progressBox{
+	background-color: #dcdcdc;
+	border-radius: 500px;
+	border: 2px solid #f4f4f4;
+	overflow: hidden;
+}
+.tab-item {
+	font-size: 100%!important;
+	font-family: inherit;
+}
+.tab-item img{
+	width: 42px;
+	display: block;
+	margin: 0 auto;
+	margin-bottom: 5px;
+}
+.tabs{
+	/*height: 100px;*/
+	padding: 15px;
+	height: auto;
+}
+.ionic a.item:after,
+.ionic button.item:after,
+.ionic .item[href] .item-content:after,
+.ionic .item[ng-click] .item-content:after {
+	 -webkit-font-smoothing: antialiased;
+	 /*font-smoothing: antialiased;*/
+	 position: absolute;
+	 top: 50%;
+	 right: 11px;
+	 display: block;
+	 margin-top: -8px;
+	 color: #ccc;
+	 content: "\f125";
+	 text-transform: none;
+	 font-weight: normal;
+	 font-style: normal;
+	 font-variant: normal;
+	 font-size: 16px;
+	 font-family: 'Ionicons';
+	 line-height: 1;
+	 /*speak: none; */
+}
+.popup{
+	border-radius: 12px!important;
+}
+.popup-buttons{
+	border-top: 1px solid #e1e1e1;
+}
+.button.ng-binding.button-default{
+	background-color: transparent;
+}
+.button.ng-binding.button-default:first-child{
+	/*border-right: 1px solid #e1e1e1;*/
+}
+.bg_blue{
+	background: -webkit-linear-gradient(left, #39b9ff, #3390ff); /* Safari 5.1 - 6.0 */
+	background: -o-linear-gradient(right, #39b9ff, #3390ff); /* Opera 11.1 - 12.0 */
+	background: -moz-linear-gradient(right, #39b9ff, #3390ff); /* Firefox 3.6 - 15 */
+	background: linear-gradient(to right, #39b9ff, #3390ff); /* 标准的语法（必须放在最后） */
+}
+/*———————————————————————————信用卡———————————————————————————————*/
+.cardInfo.b th{
+	color: #555;
+	font-weight: bold;
+	font-size: 115%;
+}
+.cardInfo.b tr{
+	line-height: 2;
+}
+.cardInfo.b{
+	text-align: center;
+	padding: 12px 0;
+}
+.cardInfo.a{
+	background-color: #2c9bff;
+	color: white;
+	padding: 12px;
+}
+.cardInfo.a span.b{
+	float: right;
+	/* text-align: right; */
+	/* display: block; */
+	padding-top: 10px;
+}
+.cardInfo.a img{
+	vertical-align: middle;
+	/* margin: 10px; */
+	width: 34px;
+	border-radius: 3px;
+	margin-right: 10px;
+}
+.creditHead:after{
+	content: '';
+	background-color: #c7c7c7;
+	display: block;
+	height: 1px;
+	position: absolute;
+	width: 21%;
+	margin: 8px 30px;
+	right: 0;
+	top: 0;
+}
+.creditHead:before{
+	content: '';
+	background-color: #c7c7c7;
+	display: block;
+	height: 1px;
+	position: absolute;
+	width: 21%;
+	margin: 8px 9%;
+	left: 0;
+	top: 0;
+}
+.creditCard{
+	border-radius: 6px;
+	overflow: hidden;
+	margin-bottom: 20px;
+	background-color: white;
+	position: relative;
+}
+/*————————————————————————————信用卡——————————————————————————————*/
+/*——————————————————————————————————————————————————————————*/
+.creditPlan img.a {
+	width: 78px;
+	margin-bottom: 20px;
+}
+.creditPlan p.b{
+	margin-bottom: 20px;
+}
+.creditPlanB tr{
+	line-height: 4;
+}
+.creditPlanA p.a{
+	margin-bottom: 20px;
+}
+.creditPlanA div.a{
+	background-color: #2da7ff;
+	position: absolute;
+	right: 0;
+	padding: 6px 14px;
+	padding-left: 22px;
+	border-radius: 1000px 0 0 1000px;
+	color: white;
+}
+.creditPlan p.a{
+	margin-bottom: 10px;
+}
+.chainLeft{
+	position: absolute;
+	top: -35px;
+	height: 50px;
+	left: 10%;
+}
+.chainRight{
+	position: absolute;
+	top: -35px;
+	height: 50px;
+	right: 10%;
+}
+.creditPlan,.creditPlanA{
+	background-color: white;
+	border-radius: 10px;
+	padding: 28px;
+	margin-bottom: 20px;
+	position: relative;
+}
+/*——————————————————————————————————————————————————————————*/
+/*——————————————————————————————————————————————————————————*/
+.planBox{
+	background-color: white;
+	padding: 24px;
+	line-height: 2;
+	/* margin: -12px; */
+	margin-bottom: 15px;
+}
+.planItem{
+	background-color: white;
+	line-height: 2.5;
+	padding: 10px 20px;
+	border-bottom: 1px solid #d2d2d2;
+}
+/*——————————————————————————————————————————————————————————*/
+/*——————————————————————————————————————————————————————————*/
+.downSlideCon a.item img{
+	width: 24px;
+}
+.downSlideCon a.item .icon.ion-ios-circle-filled{
+	 /*font-size: 25px;*/
+	color: #4ea9ff;
+}
+.downSlideCon a.item{
+	border-color: transparent;
+	background-color: transparent;
+	color: #333333;
+}
+.downSlideCon{
+	/*padding: 14px;*/
+}
+.slideInfo{
+	color: #4ea9ff;
+}
+.slideAlert{
+	color: #ff5b3b;
+}
+.slideNote{
+	border-radius: 6px;
+	border: 1px solid #c9c9c9;
+	padding: 10px 14px;
+	text-align: left;
+	/*line-height: 1.5;*/
+	color: #555;
+}
+/*——————————————————————————————————————————————————————————*/
+/*——————————————————————————————————————————————————————————*/
+.cardManageItem img{
+	width: 44px;
+	float: left;
+}
+.cardManageClass{
+	position: absolute;
+	right: 20px;
+	top: 46%;
+	color: #2da9ff;
+}
+.cardManageInfo{
+	margin-left: 68px;
+	line-height: 1.5;
+}
+.cardManageItem{
+	position: relative;
+	background-color: white;
+	border-radius: 7px;
+	padding: 24px;
+	margin-bottom: 20px;
+}
+.promotionDetail td:last-child{
+	text-align: right;
+}
+.promotionDetail img{
+	width: 26px;
+	vertical-align: middle;
+	margin-right: 5px;
+}
+.promotionDetail th{
+	color: #5ba8ff;
+}
+/*——————————————————————————————————————————————————————————*/
+/*——————————————————————————————————————————————————————————*/
+.onezone-datepicker{
+	background-color: transparent!important;
+}
+.onezone-datepicker-navigation-arrow {
+	color: #7d7d7d!important;
+}
+.onezone-datepicker-week {
+	color: #3496ff;
+	font-weight: normal!important;
+}
+.onezone-datepicker.onezone-datepicker-show {
+	border-bottom: 0!important;
+}
+.onezone-datepicker-button {
+  border-bottom: 1px solid #7d7d7d!important;
+}
+.onezone-datepicker-button:after {
+  border-bottom: 6px solid #7d7d7d!important;
+}
+.onezone-datepicker-modal-item.onezone-datepicker-modal-item-active {
+  background-color: #2da9ff!important;
+}
+.onezone-datepicker-active-day, .onezone-datepicker-active-day:hover {
+  border: 2px solid #c2e4ff!important;
+  background-color: #3391ff!important;
+  color: white!important;
+}
+/*——————————————————————————————————————————————————————————*/
+/*——————————————————————————————————————————————————————————*/
+/*——————————————————————————————————————————————————————————*/
+/*——————————————————————————————————————————————————————————*/
+/*——————————————————————————————————————————————————————————*/
+/*——————————————————————————————————————————————————————————*/
+/*——————————————————————————————————————————————————————————*/
+/*——————————————————————————————————————————————————————————*/
+/*——————————————————————————————————————————————————————————*/
+/*——————————————————————————————————————————————————————————*/
+/*——————————————————————————————————————————————————————————*/
+/*——————————————————————————————————————————————————————————*/
+/*——————————————————————————————————————————————————————————*/
+/*——————————————————————————————————————————————————————————*/
+/*——————————————————————————————————————————————————————————*/
+/*——————————————————————————————————————————————————————————*/
+/*——————————————————————————————————————————————————————————*/

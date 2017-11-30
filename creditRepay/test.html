@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<meta name="viewport"
+	      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=8">
+	<meta http-equiv="Expires" content="0">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Cache-control" content="no-cache">
+	<meta http-equiv="Cache" content="no-cache">
+	<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+<a href="sms://">打开我的app</a>
+<p><button id="btn">点我点我啊！alert，不会弹出</button></p>
+<p><button id="btn2">点我点我啊！alert2，虽然有alert和info，info执行，但是alert不弹出</button></p>
+<p><button id="btninfo">点我点我啊！info可以</button></p>
+<script>
+	console.log($==$)
+
+	$(function(){
+//		var aaa = 'baiduboxapp://';
+//		var aaa = 'mqq://';
+		var aaa = 'sms://';
+		var $info = $('#info');
+		function info(msg){
+			var p = $('<p>'+msg+'</p>');
+			$info.append(p);
+		}
+		$('#btn').on('click', function(){
+			openIos(aaa, function(t){
+				if(t){
+					alert('timeout or no '+aaa+' APP');
+				}else{
+					alert('invoke success');
+				}
+			});
+		});
+		$('#btn2').on('click', function(){
+			openIos(aaa, function(t){
+				if(t){
+					info('timeout or no '+aaa+' APP2');
+					alert('timeout or no '+aaa+' APP2');
+				}else{
+					info('invoke success2');
+					alert('invoke success2');
+				}
+			});
+		});
+		$('#btninfo').on('click', function(){
+			openIos(aaa, function(t){
+				if(t){
+					info('timeout or no '+aaa+' APP');
+				}else{
+					info('invoke success');
+				}
+			});
+		});
+	});
+	function openIos(url, callback) {
+		if (!url) {
+			return;
+		}
+		var node = document.createElement('iframe');
+		node.style.display = 'none';
+		var body = document.body;
+		var timer;
+		var clear = function(evt, isTimeout) {
+			(typeof callback==='function') &&  callback(isTimeout);
+			window.removeEventListener('pagehide', hide, true);
+			window.removeEventListener('pageshow', hide, true);
+			if (!node) {
+				return;
+			}
+			node.onload = null;
+			body.removeChild(node);
+			node = null;
+		};
+		var hide = function(e){
+			clearTimeout(timer);
+			clear(e, false);
+		};
+		window.addEventListener('pagehide', hide, true);
+		window.addEventListener('pageshow', hide, true);
+		node.onload = clear;
+		node.src = url;
+		body.appendChild(node);
+		var now = +new Date();
+//如果事件失败，则1秒设置为空
+		timer = setTimeout(function(){
+			timer = setTimeout(function(){
+				var newTime = +new Date();
+				if(now-newTime>1300){
+					clear(null, false);
+				}else{
+					clear(null, true);
+				}
+			}, 1200);
+		}, 60);
+	}
+</script>
+</body>
+</html>
