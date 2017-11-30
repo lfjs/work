@@ -1,0 +1,278 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body,html{
+	height: 100%;
+	font-size: 12px;
+
+}
+body,button{
+	font-family:"微软雅黑",Tahoma,sans-serif;
+
+
+}
+.bg_eee{
+	background-color: #eee;
+}
+.table{
+	display: table;
+	height: 100%;
+	width: 100%;
+
+}
+.row{
+	display: table-row;
+}
+.cell{
+	display: table-cell;
+}
+.textCenter{
+	text-align: center;
+}
+.vBottom {
+	vertical-align: bottom;
+}
+.clearFix:after{
+	content: '';
+	display: block;
+	clear: both;
+}
+.textTitle{
+	font-size: 184%;
+}
+.pullRight{
+	float: right;
+}
+.pullLeft{
+	float: left;
+}
+.inputBar:before,
+.payBtn:after{
+	content: '';
+	display: block;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+}
+.inputBar{
+
+	position: relative;
+	background-color: white;
+	border-radius: 5px;
+	border: 1px solid #ddd;
+	line-height: 2;
+	margin: 10px;
+	padding: 0 10px;
+
+	cursor: pointer;
+}
+.keys {
+
+	height: 0px;
+	height: 0%;
+
+	overflow: hidden;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+
+	/*background-color: white;*/
+	/* height: 250px; */
+	transition:  .2s;
+	-moz-transition:  .2s; /* Firefox 4 */
+	-webkit-transition:  .2s; /* Safari 和 Chrome */
+	-o-transition:  .2s; /* Opera */
+
+}
+.keysBg{
+
+	height: 0px;
+	height: 0%;
+	background-color: white;
+	/* height: 250px; */
+	transition:  .2s;
+	-moz-transition:  .2s; /* Firefox 4 */
+	-webkit-transition:  .2s; /* Safari 和 Chrome */
+	-o-transition:  .2s; /* Opera */
+
+}
+
+.keys table,
+.keys table tr th,
+.keys table tr td {
+	border: 1px solid #ecedef;
+}
+button{
+	-webkit-user-select:none;
+
+	-moz-user-select:none;
+
+	-ms-user-select:none;
+
+	user-select:none;
+}
+.width25{
+	width: 25%;
+}
+.height25{
+	height: 25%;
+}
+.keysBtn {
+	width: 100%;
+	height: 100%;
+	border: 0;
+	border-radius: 0;
+	background-color: white;
+
+	transition:  .2s;
+	-moz-transition:  .2s; /* Firefox 4 */
+	-webkit-transition:  .2s; /* Safari 和 Chrome */
+	-o-transition:  .2s; /* Opera */
+}
+.payBtn {
+	background-color: #c9c9c9;
+	color: white;
+
+	position: relative;
+}
+#payBtn[title=pay]{
+
+	background-color: #0fb4ff;
+
+}
+.loadingBox{
+	background-color: rgba(0, 0, 0, 0.6);
+	/* margin: 52px; */
+	width: 100px;
+	margin: 0 auto;
+	color: white;
+	border-radius: 15px;
+	padding: 21px;
+	font-size: 20px;
+}
+.loadingBg{
+
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.35);
+
+	display: none;
+}
+#keysInput{
+	border-right: 2px solid;
+	animation:downShineHover 1s infinite;
+	-webkit-animation:downShineHover 1s infinite; /* Safari and Chrome */
+}
+@keyframes downShineHover {
+	0%   {
+		border-color: transparent;
+	}
+	50% {
+		border-color: white;
+	}
+	100% {
+		border-color: transparent;
+	}
+}
+@-webkit-keyframes downShineHover /* Safari and Chrome */
+{
+	0%   {
+		border-color: transparent;
+	}
+	50% {
+		border-color: white;
+	}
+	100% {
+		border-color: transparent;
+	}
+}
+/*—————————————————————————————————————————————————————————————————*/
+.bg_blue{
+	background: -webkit-linear-gradient(left, #39b9ff, #3390ff); /* Safari 5.1 - 6.0 */
+	background: -o-linear-gradient(right, #39b9ff, #3390ff); /* Opera 11.1 - 12.0 */
+	background: -moz-linear-gradient(right, #39b9ff, #3390ff); /* Firefox 3.6 - 15 */
+	background: linear-gradient(to right, #39b9ff, #3390ff); /* 标准的语法（必须放在最后） */
+}
+.navBack{
+
+	line-height: 50px;
+	padding: 0 17px;
+	position: absolute;
+	left: 0;
+	background-color: transparent;
+	border: 0;
+	color: #00b0ff;
+
+}
+.inputBarII{
+	margin: 0;
+	border-radius: 0;
+	border: 0;
+	background-color: #00b0ff;
+	color: white;
+	padding: 0 24px;
+
+}
+.navTop{
+
+	background-color: white;
+	text-align: center;
+	line-height: 50px;
+
+	font-size: 18px;
+}
+.box_shadow{
+	box-shadow: 0px 2px 9px 0px #c8e1f9;
+}
+.channel th{
+	border-bottom: 2px solid #f1f1f1;
+	text-align: left;
+	color: black;
+}
+.channel table{
+	line-height: 2.5;
+	width: 100%;
+	color: #6e6e6e;
+}
+.channel .checked{
+	position: absolute;
+
+	background-color: transparent;
+	color: #36a2ff;
+	font-size: 30px;
+	line-height: 1;
+	right: -8px;
+	top: -12px;
+
+}
+.channel.item{
+
+	background-color: white;
+	border-radius: 10px;
+	padding: 0 10px;
+	margin: 0 24px;
+	position: relative;
+
+	margin-bottom: 18px;
+}
+.hideKeys{
+	position: relative;
+}
+.channel.item:after,
+#keysClear:after,
+.hideKeys:after{
+	content: '';
+	display: block;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+}

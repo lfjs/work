@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<meta name="viewport"
+	      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=8">
+	<meta http-equiv="Expires" content="0">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Cache-control" content="no-cache">
+	<meta http-equiv="Cache" content="no-cache">
+	<link rel="stylesheet" href="font-awesome.min.css"/>
+	<link rel="stylesheet" href="css.css"/>
+	<script src="fastclick.min.js"></script>
+</head>
+<body class="bg_eee">
+<div class="navTop">
+	<button style="font-size: 30px;" class="navBack">
+		<i class="icon-angle-left"></i>
+	</button>
+	<div>扫码收款</div>
+</div>
+<div id="inputBar" class="inputBar inputBarII bg_blue textTitle clearFix">
+	<span class="" style="white-space: nowrap;">
+		￥
+		<span id="keysInput">no cash</span>
+	</span>
+
+	<button id="keysClear" style="font-size: 20px;right: 0;left: auto;color: white;line-height: 44px;" class="navBack">
+		<i class="icon-remove-sign"></i>
+	</button>
+</div>
+<div style="margin: 12px 24px;">
+	请选择通道：
+	<input id="channelSelected" type="text" placeholder="隐藏控件"/>
+
+</div>
+<div>
+
+	<div title="1" class="channel box_shadow item">
+		<div class="checked"><i class="icon-ok-sign"></i></div>
+		<table>
+			<tr>
+				<th colspan="3">
+					<div>
+						<img style="width: 24px;vertical-align: middle" src="logo1.png" alt=""/>
+						微信（D0）：</div></th></tr>
+			<tr>
+				<td>
+					费率</td>
+				<td>
+					结算</td>
+				<td style="text-align: right">
+					单笔：100-5000元</td></tr>
+			<tr>
+				<td>
+					0.36%</td>
+				<td>
+					0.00元/笔</td>
+				<td style="text-align: right">
+					当天：50000.00元</td></tr></table>
+	</div>
+	<div title="2" class="channel box_shadow item">
+		<div style="display: none" class="checked"><i class="icon-ok-sign"></i></div>
+		<table>
+			<tr>
+				<th colspan="3">
+					<div>
+						<img style="width: 24px;vertical-align: middle" src="logo1.png" alt=""/>
+						微信（D0）：</div></th></tr>
+			<tr>
+				<td>
+					费率</td>
+				<td>
+					结算</td>
+				<td style="text-align: right">
+					单笔：100-5000元</td></tr>
+			<tr>
+				<td>
+					0.36%</td>
+				<td>
+					0.00元/笔</td>
+				<td style="text-align: right">
+					当天：50000.00元</td></tr></table>
+	</div>
+	<div title="3" class="channel box_shadow item">
+		<div style="display: none" class="checked"><i class="icon-ok-sign"></i></div>
+		<table>
+			<tr>
+				<th colspan="3">
+					<div>
+						<img style="width: 24px;vertical-align: middle" src="logo1.png" alt=""/>
+						微信（D0）：</div></th></tr>
+			<tr>
+				<td>
+					费率</td>
+				<td>
+					结算</td>
+				<td style="text-align: right">
+					单笔：100-5000元</td></tr>
+			<tr>
+				<td>
+					0.36%</td>
+				<td>
+					0.00元/笔</td>
+				<td style="text-align: right">
+					当天：50000.00元</td></tr></table>
+	</div>
+	<div title="4" class="channel box_shadow item">
+		<div style="display: none" class="checked"><i class="icon-ok-sign"></i></div>
+		<table>
+			<tr>
+				<th colspan="3">
+					<div>
+						<img style="width: 24px;vertical-align: middle" src="logo1.png" alt=""/>
+						微信（D0）：</div></th></tr>
+			<tr>
+				<td>
+					费率</td>
+				<td>
+					结算</td>
+				<td style="text-align: right">
+					单笔：100-5000元</td></tr>
+			<tr>
+				<td>
+					0.36%</td>
+				<td>
+					0.00元/笔</td>
+				<td style="text-align: right">
+					当天：50000.00元</td></tr></table>
+	</div>
+</div>
+<div id="keysBg"></div>
+<div id="keys" class="keys">
+	<table class="" style="border:0;width: 100%;height: 100%;text-align: center;border-collapse: collapse;
+">
+		<tr class="height25">
+			<td class="width25"><button class="textTitle keysBtn numBtn">1</button></td>
+			<td class="width25"><button class="textTitle keysBtn numBtn">2</button></td>
+			<td class="width25"><button class="textTitle keysBtn numBtn">3</button></td>
+			<td class="width25"><button class="textTitle keysBtn hideKeys">
+				<i class="icon-angle-down"></i>
+			</button></td>
+		</tr>
+		<tr class="height25">
+			<td><button class="textTitle keysBtn numBtn">4</button></td>
+			<td><button class="textTitle keysBtn numBtn">5</button></td>
+			<td><button class="textTitle keysBtn numBtn">6</button></td>
+			<td rowspan="3">
+				<button id="payBtn" class="keysBtn payBtn">
+					<img src="logo2.png" style="width: 42px" alt=""/>
+
+					<div>快捷收款</div>
+				</button>
+			</td>
+		</tr>
+		<tr class="height25">
+			<td><button class="textTitle keysBtn numBtn">7</button></td>
+			<td><button class="textTitle keysBtn numBtn">8</button></td>
+			<td><button class="textTitle keysBtn numBtn">9</button></td>
+		</tr>
+		<tr class="height25">
+			<td><button class="textTitle keysBtn decimalBtn">.</button></td>
+			<td><button class="textTitle keysBtn numBtn">0</button></td>
+			<td><button class="textTitle keysBtn backspaceBtn">←</button></td>
+
+		</tr>
+	</table>
+</div>
+<div id="loading" class="table loadingBg">
+	<div class="cell textCenter" style="vertical-align: middle">
+		<div class="loadingBox">
+			<img style="width: 50%" src="2.gif" alt=""/>
+			<br/>
+			正在提交
+		</div>
+	</div>
+</div>
+<script>
+
+	if ('addEventListener' in document) {
+		document.addEventListener('DOMContentLoaded', function() {
+			FastClick.attach(document.body);
+		}, false);
+	}
+</script>
+<script src="js.js"></script>
+</body>
+</html>
