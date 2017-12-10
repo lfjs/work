@@ -219,7 +219,7 @@
 		e = angular.module("onezone-datepicker.templates", [])
 	}
 	e.run(["$templateCache", function (e) {
-		e.put("onezone-datepicker.html", '<div class=onezone-content><div class=onezone-transclude><ng-transclude></ng-transclude></div><div class=onezone-datepicker ng-class="{ \'onezone-datepicker-show\' : datepicker.showDatepicker }"><div class=onezone-datepicker-modal ng-if="datepicker.showLoader || datepicker.showMonthModal || datepicker.showYearModal"><div class="onezone-datepicker-close-button icon ion-ios-close-outline" ng-if="datepicker.showMonthModal || datepicker.showYearModal" ng-click=closeModals()></div><ion-spinner icon=spiral class="spinner-dark onezone-datepicker-loader" ng-if=datepicker.showLoader></ion-spinner><div class=onezone-datepicker-modal-content ng-if=datepicker.showMonthModal><div class="onezone-datepicker-button onezone-datepicker-select-year" ng-click=openYearModal()>{{currentMonth.getFullYear()}}</div><div class=onezone-datepicker-modal-item ng-repeat="m in months track by $index" ng-class="{\'onezone-datepicker-modal-item-active\': currentMonth.getMonth() == $index}" ng-click=selectMonth($index)>{{m.substr(0,3)}}</div></div><div class=onezone-datepicker-modal-content ng-if=datepicker.showYearModal><ion-slide-box show-pager=false active-slide=selectedYearSlide><ion-slide ng-repeat="slide in yearSlides"><div class=onezone-datepicker-modal-item ng-repeat="year in slide.years" ng-click=selectYear(year) ng-class="{\'onezone-datepicker-modal-item-active\': currentMonth.getFullYear() == year}">{{year}}</div></ion-slide></ion-slide-box></div></div><div class=row><div class=col-25><span class="onezone-datepicker-navigation-arrow ion-arrow-left-b" ng-click=previousMonth()></span></div><div class="col text-center"><div class=onezone-datepicker-button ng-click=openMonthModal()>{{months[currentMonth.getMonth()]}} {{currentMonth.getFullYear()}}</div></div><div class="col-25 text-right"><span class="onezone-datepicker-navigation-arrow icon ion-arrow-right-b" ng-click=nextMonth()></span></div></div><div class=row><div class="col onezone-datepicker-week" ng-repeat="dayOfTheWeek in daysOfTheWeek track by $index">{{ dayOfTheWeek }}</div></div><div class=row ng-repeat="week in month" on-swipe-right=swipeRight() on-swipe-left=swipeLeft()><div class=col ng-repeat="day in week.days" ng-click="selectDate(day.fullDate, day.isDisabled)"><div class=onezone-datepicker-day ng-style="{ \'background-color\': day.highlight.color, \'color\': day.highlight.textColor }" ng-class="{ \'onezone-datepicker-current-day\' : day.isToday, \'onezone-datepicker-different-month\' : !day.isCurrentMonth, \'onezone-datepicker-active-day\' : sameDate(day.fullDate, selectedDate), \'onezone-datepicker-disable-day\' : day.isDisabled }">{{day.date}}</div></div></div><div class=row ng-if=!datepicker.calendarMode><div class=col><span class="onezone-datepicker-selection-button ion-ios-calendar-outline" ng-if=datepicker.showTodayButton ng-click=selectToday()></span></div><div class="col text-right"><span class="onezone-datepicker-selection-button ion-ios-close-outline" ng-if=!datepicker.hideCancelButton ng-click=hideDatepicker()></span> <span class="onezone-datepicker-selection-button ion-ios-checkmark" ng-if=!datepicker.hideSetButton ng-click=setDate()></span></div></div></div></div>')
+		e.put("onezone-datepicker.html", '<div class=onezone-content><div class=onezone-transclude><ng-transclude></ng-transclude></div><div class=onezone-datepicker ng-class="{ \'onezone-datepicker-show\' : datepicker.showDatepicker }"><div class=onezone-datepicker-modal ng-if="datepicker.showLoader || datepicker.showMonthModal || datepicker.showYearModal"><div class="onezone-datepicker-close-button icon ion-ios-close-outline" ng-if="datepicker.showMonthModal || datepicker.showYearModal" ng-click=closeModals()></div><ion-spinner icon=spiral class="spinner-dark onezone-datepicker-loader" ng-if=datepicker.showLoader></ion-spinner><div class=onezone-datepicker-modal-content ng-if=datepicker.showMonthModal><div class="onezone-datepicker-button onezone-datepicker-select-year" ng-click=openYearModal()>{{currentMonth.getFullYear()}}</div><div class=onezone-datepicker-modal-item ng-repeat="m in months track by $index" ng-class="{\'onezone-datepicker-modal-item-active\': currentMonth.getMonth() == $index}" ng-click=selectMonth($index)>{{m.substr(0,3)}}</div></div><div class=onezone-datepicker-modal-content ng-if=datepicker.showYearModal><ion-slide-box show-pager=false active-slide=selectedYearSlide><ion-slide ng-repeat="slide in yearSlides"><div class=onezone-datepicker-modal-item ng-repeat="year in slide.years" ng-click=selectYear(year) ng-class="{\'onezone-datepicker-modal-item-active\': currentMonth.getFullYear() == year}">{{year}}</div></ion-slide></ion-slide-box></div></div><div class=row><div class=col-25><span class="onezone-datepicker-navigation-arrow ion-arrow-left-b" ng-click=previousMonth()></span></div><div class="col text-center"><div class=onezone-datepicker-button ng-click=openMonthModal()>{{months[currentMonth.getMonth()]}} {{currentMonth.getFullYear()}}</div></div><div class="col-25 text-right"><span class="onezone-datepicker-navigation-arrow icon ion-arrow-right-b" ng-click=nextMonth()></span></div></div><div class=row><div class="col onezone-datepicker-week" ng-repeat="dayOfTheWeek in daysOfTheWeek track by $index">{{ dayOfTheWeek }}</div></div><div class=row ng-repeat="week in month" on-swipe-right=swipeRight() on-swipe-left=swipeLeft()><div class=col ng-repeat="day in week.days" ng-click="selectDate(day.fullDate, day.isDisabled)"><div class=onezone-datepicker-day ng-style="{ \'background-color\': day.highlight.color, \'color\': day.highlight.textColor }" ng-class="{ \'onezone-datepicker-current-day\' : day.isToday, \'onezone-datepicker-different-month\' : !day.isCurrentMonth, \'\' : sameDate(day.fullDate, selectedDate), \'onezone-datepicker-disable-day\' : day.isDisabled }">{{day.date}}</div></div></div><div class=row ng-if=!datepicker.calendarMode><div class=col><span class="onezone-datepicker-selection-button ion-ios-calendar-outline" ng-if=datepicker.showTodayButton ng-click=selectToday()></span></div><div class="col text-right"><span class="onezone-datepicker-selection-button ion-ios-close-outline" ng-if=!datepicker.hideCancelButton ng-click=hideDatepicker()></span> <span class="onezone-datepicker-selection-button ion-ios-checkmark" ng-if=!datepicker.hideSetButton ng-click=setDate()></span></div></div></div></div>')
 	}])
 }(), angular.module("onezone-datepicker.service", ["ionic"]).factory("onezoneDatepickerService", function () {
 	"use strict";
@@ -361,7 +361,38 @@
 			hideSetButton: !1
 		}, d = n(e), e.datepicker.showDatepicker = d.showDatepicker || d.calendarMode, e.datepicker.calendarMode = d.calendarMode, e.datepicker.hideCancelButton = d.hideCancelButton, e.datepicker.hideSetButton = d.hideSetButton, e.datepicker.showTodayButton = t.showTodayButton(d), e.sameDate = function (e, n) {
 			return t.sameDate(e, n)
+
+
 		}, e.selectDate = function (n, a) {
+
+			var _this = this;
+			(function(){
+				for(var i=0;i<e.datepickerObject.highlights.length;i++){
+
+					if(e.datepickerObject.highlights[i].date.toString()==_this.day.fullDate.toString()){
+						console.log('已存在高亮！');
+						e.datepickerObject.highlights.splice(i,1);
+
+						return
+					}else{
+
+					}
+				}
+				e.datepickerObject.highlights.push(
+					{
+						date: _this.day.fullDate,
+						color: '#c2e4ff',
+						textColor: '#3391ff'
+					}
+				);
+
+			})();
+			//this.day.highlight = true
+			//console.log(8888888888888888888);
+			//console.log(n, a);
+			//console.log(this.day);
+			//console.log(e.datepickerObject.highlights);
+
 			a || (e.selectedDate = n, e.month = e.createDatepicker(e.selectedDate), e.currentMonth = angular.copy(n), e.selectedYearSlide = t.getActiveYearSlide(e.yearSlides, e.currentMonth.getFullYear()), (d.calendarMode || d.hideSetButton) && i(e, d))
 		}, e.selectToday = function () {
 			var n = new Date;

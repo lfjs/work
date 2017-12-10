@@ -175,7 +175,7 @@ angular.module("controllers", [])
 			amount: 30000,
 			amount_principal: 3000,
 			mode: 1,
-			date: '20171119,20171120',
+			date: '20171219,20171220',
 			//date: '',
 		};
 		$scope.repay_latest = {
@@ -354,6 +354,27 @@ angular.module("controllers", [])
 		var currentDate = new Date();
 		//var date = new Date(currentDate.getFullYear(), currentDate.getMonth(), 23);
 		var date = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
+		$scope.hl = $scope.creditNew.date.split(',');
+		for(var i=0;i<$scope.hl.length;i++){
+
+			var bbb = $scope.hl[i].match(/\d\d/g);
+			//$scope.hl[i] = bbb;
+			if ($scope.hl[i] != null) {
+				var aaa = new Date(bbb[0].toString()+bbb[1].toString(), (bbb[2]-1).toString(), bbb[3].toString());
+				$scope.hl[i] =
+
+
+					{
+						date: aaa,
+						//date: 'Fri Nov 17 2017 00:00:00 GMT+0800 (中国标准时间)',
+						color: '#c2e4ff',
+						textColor: '#3391ff'
+					}
+
+			}
+
+
+		}
 		$scope.date = date;
 		$scope.onezoneDatepicker = {
 			date: date,
@@ -372,17 +393,32 @@ angular.module("controllers", [])
 			showTodayButton: false,
 			calendarMode: true,//纯日历模式，取消确定取消等按钮
 			hideCancelButton: false,
-			//highlights : [
-			//	{
-			//		date: new Date(date.getFullYear(), date.getMonth(), 17),
-			//		//date: 'Fri Nov 17 2017 00:00:00 GMT+0800 (中国标准时间)',
-			//		color: '#c2e4ff',
-			//		textColor: '#3391ff'
-			//	}
-			//],
+			highlights : $scope.hl,
 			hideSetButton: false,
 			callback: function(){
 				$scope.dateSelectedCheck($filter('date')($scope.onezoneDatepicker.date,'yyyyMMdd'))
+
+
+				//for(var i=0;i<$scope.onezoneDatepicker.highlights.length;i++){
+				//
+				//	if($scope.onezoneDatepicker.highlights[i].date.toString()==$scope.onezoneDatepicker.date.toString()){
+				//		console.log('已存在高亮！');
+				//		$scope.onezoneDatepicker.highlights.splice(i,1);
+				//
+				//		return
+				//	}else{
+				//
+				//	}
+				//}
+				//
+				//$scope.onezoneDatepicker.highlights.push(
+				//	{
+				//		date: $scope.onezoneDatepicker.date,
+				//		color: '#c2e4ff',
+				//		textColor: '#3391ff'
+				//	}
+				//);
+//————————————————————————————————————————————————————————
 			}
 		};
 		$scope.showDatepicker = function () {
