@@ -367,6 +367,11 @@
 
 			var _this = this;
 			(function(){
+				if(_this.day.isDisabled){
+					console.log('无法选取禁用日期！');
+
+					return
+				}
 				for(var i=0;i<e.datepickerObject.highlights.length;i++){
 
 					if(e.datepickerObject.highlights[i].date.toString()==_this.day.fullDate.toString()){

@@ -175,7 +175,8 @@ angular.module("controllers", [])
 			amount: 30000,
 			amount_principal: 3000,
 			mode: 1,
-			date: '20171219,20171220',
+			//date: '20171219,20171220',
+			date: '',
 			//date: '',
 		};
 		$scope.repay_latest = {
@@ -354,18 +355,18 @@ angular.module("controllers", [])
 		var currentDate = new Date();
 		//var date = new Date(currentDate.getFullYear(), currentDate.getMonth(), 23);
 		var date = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
-		$scope.hl = $scope.creditNew.date.split(',');
-		for(var i=0;i<$scope.hl.length;i++){
+		$scope.dateToHighlights = $scope.creditNew.date?$scope.creditNew.date.split(','):[];
+		for(var i=0;i<$scope.dateToHighlights.length;i++){
 
-			var bbb = $scope.hl[i].match(/\d\d/g);
-			//$scope.hl[i] = bbb;
-			if ($scope.hl[i] != null) {
-				var aaa = new Date(bbb[0].toString()+bbb[1].toString(), (bbb[2]-1).toString(), bbb[3].toString());
-				$scope.hl[i] =
+			var dateStrTemp = $scope.dateToHighlights[i].match(/\d\d/g);
+			//$scope.dateToHighlights[i] = dateStrTemp;
+			if ($scope.dateToHighlights[i] != null) {
+				var dateFormatted = new Date(dateStrTemp[0].toString()+dateStrTemp[1].toString(), (dateStrTemp[2]-1).toString(), dateStrTemp[3].toString());
+				$scope.dateToHighlights[i] =
 
 
 					{
-						date: aaa,
+						date: dateFormatted,
 						//date: 'Fri Nov 17 2017 00:00:00 GMT+0800 (中国标准时间)',
 						color: '#c2e4ff',
 						textColor: '#3391ff'
@@ -388,12 +389,16 @@ angular.module("controllers", [])
 			disablePastDays: true,
 			disableSwipe: false,
 			disableWeekend: false,
-			//disableDates: [new Date(date.getFullYear(), date.getMonth(), 15), new Date(date.getFullYear(), date.getMonth(), 16), new Date(date.getFullYear(), date.getMonth(), 17)],
+			disableDates: [
+				new Date(date.getFullYear(), date.getMonth(), 15),
+				new Date(date.getFullYear(), date.getMonth(), 16),
+				new Date(date.getFullYear(), date.getMonth(), 17)
+			],
 			showDatepicker: true,
 			showTodayButton: false,
 			calendarMode: true,//纯日历模式，取消确定取消等按钮
 			hideCancelButton: false,
-			highlights : $scope.hl,
+			highlights : $scope.dateToHighlights,
 			hideSetButton: false,
 			callback: function(){
 				$scope.dateSelectedCheck($filter('date')($scope.onezoneDatepicker.date,'yyyyMMdd'))
