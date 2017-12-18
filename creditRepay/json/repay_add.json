@@ -1,0 +1,132 @@
+{
+  "code": 1,
+  "msg": "\u8ba1\u5212\u751f\u6210\u6210\u529f",
+  "data": {
+    "order_id": "370566924206087456",
+    "repay": {
+      "repay": {
+        "times_repay": 2,
+        "times_consume": 3,
+        "total_repay": 22242.6,
+        "total_consume": 22379.9,
+        "days": 1,
+        "fee": 137.28,
+        "fee_consume": 0.006,
+        "fee_settle_consume": 1,
+        "user_id": "1000000456",
+        "card_id": 26,
+        "amount": 20000,
+        "amount_principal": 15000,
+        "date_bill": "20171204",
+        "date_repay": "20171226",
+        "date_select": "20171220",
+        "mode": 2,
+        "fee_formula": "\u624b\u7eed\u8d39=\u5b9e\u9645\u6d88\u8d39*0.006+\u6d88\u8d39\u7b14\u6570*1",
+        "fee_formula_detail": "137.28=22379.9*0.006+3*1"
+      },
+      "detail": [
+        {
+          "times_consume": 2,
+          "detail": [
+            {
+              "type": 1,
+              "batch_id": 1,
+              "sequence_id": 0,
+              "is_last": 0,
+              "amount": 5801.3,
+              "order_info": "\u822a\u7a7a\u673a\u7968",
+              "fee": 35.81,
+              "datetime": "20171220093500"
+            },
+            {
+              "type": 1,
+              "batch_id": 1,
+              "sequence_id": 1,
+              "is_last": 1,
+              "amount": 7848.8,
+              "order_info": "\u822a\u7a7a\u673a\u7968",
+              "fee": 48.09,
+              "datetime": "20171220140323"
+            },
+            {
+              "type": 2,
+              "batch_id": 1,
+              "amount": 12482.7,
+              "fee": 0,
+              "datetime": "20171220143824"
+            }
+          ],
+          "date": "20171220",
+          "time": "143824"
+        },
+        {
+          "times_consume": 1,
+          "detail": [
+            {
+              "type": 1,
+              "batch_id": 2,
+              "sequence_id": 0,
+              "is_last": 1,
+              "amount": 8729.9,
+              "order_info": "\u822a\u7a7a\u673a\u7968",
+              "fee": 53.38
+            },
+            {
+              "type": 2,
+              "batch_id": 2,
+              "is_last": 1,
+              "amount": 9759.9,
+              "fee": 0
+            }
+          ],
+          "date": "20171220"
+        }
+      ],
+      "detail_format": [
+        {
+          "type": 1,
+          "batch_id": 1,
+          "sequence_id": 0,
+          "is_last": 0,
+          "amount": 5801.3,
+          "order_info": "\u822a\u7a7a\u673a\u7968",
+          "fee": 35.81,
+          "datetime": "20171220093500"
+        },
+        {
+          "type": 1,
+          "batch_id": 1,
+          "sequence_id": 1,
+          "is_last": 1,
+          "amount": 7848.8,
+          "order_info": "\u822a\u7a7a\u673a\u7968",
+          "fee": 48.09,
+          "datetime": "20171220140323"
+        },
+        {
+          "type": 2,
+          "batch_id": 1,
+          "amount": 12482.7,
+          "fee": 0,
+          "datetime": "20171220143824"
+        },
+        {
+          "type": 1,
+          "batch_id": 2,
+          "sequence_id": 0,
+          "is_last": 1,
+          "amount": 8729.9,
+          "order_info": "\u822a\u7a7a\u673a\u7968",
+          "fee": 53.38
+        },
+        {
+          "type": 2,
+          "batch_id": 2,
+          "is_last": 1,
+          "amount": 9759.9,
+          "fee": 0
+        }
+      ]
+    }
+  }
+}

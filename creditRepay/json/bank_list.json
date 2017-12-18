@@ -1,0 +1,156 @@
+{
+  "code": 1,
+  "msg": "json\u5f00\u6237\u884c\u5217\u8868",
+  "data": [
+    {
+      "id": "1",
+      "name": "\u5de5\u5546\u94f6\u884c",
+      "code": "ICBC",
+      "cnaps_code": "102100099996",
+      "sort": "65535",
+      "status": "1",
+      "time_create": "1465737889",
+      "time_update": "1465737980"
+    },
+    {
+      "id": "18",
+      "name": "\u5e7f\u4e1c\u53d1\u5c55\u94f6\u884c",
+      "code": "CGD",
+      "cnaps_code": "306581000003",
+      "sort": "65535",
+      "status": "1",
+      "time_create": "1472636411",
+      "time_update": "0"
+    },
+    {
+      "id": "17",
+      "name": "\u6df1\u5733\u53d1\u5c55\u94f6\u884c",
+      "code": "SDB",
+      "cnaps_code": "307584007998",
+      "sort": "65535",
+      "status": "1",
+      "time_create": "1472636405",
+      "time_update": "0"
+    },
+    {
+      "id": "16",
+      "name": "\u534e\u590f\u94f6\u884c",
+      "code": "HXB",
+      "cnaps_code": "304100040000",
+      "sort": "65535",
+      "status": "1",
+      "time_create": "1472636400",
+      "time_update": "0"
+    },
+    {
+      "id": "14",
+      "name": "\u5174\u4e1a\u94f6\u884c",
+      "code": "CIB",
+      "cnaps_code": "309391000011",
+      "sort": "65535",
+      "status": "1",
+      "time_create": "1472636390",
+      "time_update": "0"
+    },
+    {
+      "id": "13",
+      "name": "\u4ea4\u901a\u94f6\u884c",
+      "code": "COMM",
+      "cnaps_code": "301290000007",
+      "sort": "65535",
+      "status": "1",
+      "time_create": "1472636385",
+      "time_update": "0"
+    },
+    {
+      "id": "12",
+      "name": "\u4e2d\u4fe1\u94f6\u884c",
+      "code": "CITIC",
+      "cnaps_code": "302100011000",
+      "sort": "65535",
+      "status": "1",
+      "time_create": "1472636381",
+      "time_update": "0"
+    },
+    {
+      "id": "11",
+      "name": "\u4e2d\u56fd\u5149\u5927\u94f6\u884c",
+      "code": "CEB",
+      "cnaps_code": "303100000006",
+      "sort": "65535",
+      "status": "1",
+      "time_create": "1472636375",
+      "time_update": "0"
+    },
+    {
+      "id": "10",
+      "name": "\u4e2d\u56fd\u6c11\u751f\u94f6\u884c",
+      "code": "CMBC",
+      "cnaps_code": "305100000013",
+      "sort": "65535",
+      "status": "1",
+      "time_create": "1472636368",
+      "time_update": "0"
+    },
+    {
+      "id": "9",
+      "name": "\u4e2d\u56fd\u94f6\u884c",
+      "code": "BOC",
+      "cnaps_code": "104100000004",
+      "sort": "65535",
+      "status": "1",
+      "time_create": "1472636362",
+      "time_update": "0"
+    },
+    {
+      "id": "8",
+      "name": "\u62db\u5546\u94f6\u884c",
+      "code": "CMB",
+      "cnaps_code": "308584000013",
+      "sort": "65535",
+      "status": "1",
+      "time_create": "1472636276",
+      "time_update": "0"
+    },
+    {
+      "id": "6",
+      "name": "\u90ae\u653f\u94f6\u884c",
+      "code": "PSBC",
+      "cnaps_code": "403100000004",
+      "sort": "65535",
+      "status": "1",
+      "time_create": "1465737889",
+      "time_update": "1465737980"
+    },
+    {
+      "id": "5",
+      "name": "\u519c\u4e1a\u94f6\u884c",
+      "code": "ABC",
+      "cnaps_code": "103100000026",
+      "sort": "65535",
+      "status": "1",
+      "time_create": "1465737889",
+      "time_update": "1465737980"
+    },
+    {
+      "id": "2",
+      "name": "\u5efa\u8bbe\u94f6\u884c",
+      "code": "CCB",
+      "cnaps_code": "105100000017",
+      "sort": "65535",
+      "status": "1",
+      "time_create": "1465737889",
+      "time_update": "1465737980"
+    },
+    {
+      "id": "30",
+      "name": "\u6df1\u5733\u5e73\u5b89\u94f6\u884c",
+      "code": "SZPAB",
+      "cnaps_code": "307584007998",
+      "sort": "65535",
+      "status": "1",
+      "time_create": "1472636466",
+      "time_update": "0"
+    }
+  ]
+}

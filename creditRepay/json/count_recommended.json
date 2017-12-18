@@ -1,0 +1,13 @@
+{
+  "code": 1,
+  "msg": "\u63a8\u8350\u7edf\u8ba1",
+  "data": {
+    "total": 12,
+    "active": 2,
+    "unactivated": 10,
+    "grade_1": "7",
+    "grade_2": "2",
+    "grade_3": "1",
+    "grade_4": "2"
+  }
+}

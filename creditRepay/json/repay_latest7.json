@@ -1,0 +1,53 @@
+{
+  "code": 1,
+  "msg": "json\u6700\u65b0\u8fd8\u6b3e\u8ba1\u5212",
+  "data": {
+    "repay": {
+      "id": "10",
+      "user_id": "1000000456",
+      "order_id": "620564680422384456",
+      "card_id": "7",
+      "bankcardnum": "622700000000001",
+      "amount": "30000.00",
+      "amount_principal": "3000.00",
+      "date_bill": "20171101",
+      "date_repay": "20171125",
+      "date_select": "20171119,20171120",
+      "mode": "0",
+      "total_consume": "31177.20",
+      "fee": "198.06",
+      "total_repay": "30979.10",
+      "days": "2",
+      "times_consume": "11",
+      "times_repay": "11",
+      "times_consume_finish": "6",
+      "times_repay_finish": "5",
+      "time_create": "1511336427",
+      "time_update": "1511405756",
+      "status": "2",
+      "remark": null,
+      "count_query": "0",
+      "progress": "0.50"
+    },
+    "card": {
+      "id": "7",
+      "user_id": "1000000456",
+      "phone": "18700000000",
+      "realname": "\u6c49*\u4e8c",
+      "idcard": "370202***********2111",
+      "bankcardnum": "0001",
+      "bank_id": "1",
+      "bank_name": "\u5de5\u5546\u94f6\u884c",
+      "cvn2": "134",
+      "date_valid": "0125",
+      "date_bill": "20171201",
+      "date_repay": "20171225",
+      "type": "1",
+      "status": "1",
+      "time_create": "1511162699",
+      "time_update": "0",
+      "bank_icon": "img/ICBC.png"
+
+    }
+  }
+}

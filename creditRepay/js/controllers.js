@@ -33,20 +33,40 @@ angular.module("controllers", [])
 		$scope.api = {
 			reg : 'http://47.96.128.18/aiyongka/mobile/index.php/site/register',//注册
 			verify : 'http://47.96.128.18/aiyongka/mobile/index.php/site/sendMsg',//验证码
-			login : 'http://47.96.128.18/aiyongka/mobile/index.php/site/login',//登录
+			login : 'json/login.json',//登录
 			idCer : 'http://47.96.128.18/aiyongka/mobile/index.php/user/verify',//实名认证
 			changePsw : 'http://47.96.128.18/aiyongka/mobile/index.php/site/password_reset',//实名认证
-			bank_list : 'http://47.96.128.18/aiyongka/mobile/index.php/site/bank_list',//
-			get_area : 'http://47.96.128.18/aiyongka/mobile/index.php/user/get_area',//
+			bank_list : 'json/bank_list.json',//登录
+
+			//bank_list : 'http://47.96.128.18/aiyongka/mobile/index.php/site/bank_list',//
+			get_area : 'json/get_area.json',//登录
+
+			//get_area : 'http://47.96.128.18/aiyongka/mobile/index.php/user/get_area',//
 			addCard : 'http://47.96.128.18/aiyongka/mobile/index.php/repay/card_add',//
-			credit : 'http://47.96.128.18/aiyongka/mobile/index.php/repay/card_list',//
+			credit : 'json/credit.json',//登录
 			creditView : 'http://47.96.128.18/aiyongka/mobile/index.php/repay/repay_add',//
 			creditNew : 'http://47.96.128.18/aiyongka/mobile/index.php/repay/repay_add_confirm',//
-			creditPrev : 'http://47.96.128.18/aiyongka/mobile/index.php/repay/repay_list',//
+			creditPrev : 'json/repay_list.json',//登录
+
+			//creditPrev : 'http://47.96.128.18/aiyongka/mobile/index.php/repay/repay_list',//
 			card_unbind : 'http://47.96.128.18/aiyongka/mobile/index.php/repay/card_unbind',//
 			card_edit : 'http://47.96.128.18/aiyongka/mobile/index.php/repay/card_edit',//
-			userInfo : 'http://47.96.128.18/aiyongka/mobile/index.php/user/userinfo',//
-			repay_latest : 'http://47.96.128.18/aiyongka/mobile/index.php/repay/repay_latest',//
+			//userInfo : 'http://47.96.128.18/aiyongka/mobile/index.php/user/userinfo',//
+			userInfo : 'json/userInfo.json',//登录
+			repay_latest7 : 'json/repay_latest7.json',//
+			repay_latest10 : 'json/repay_latest10.json',//
+			repay_latest26 : 'json/repay_latest26.json',//
+			card_detail : 'json/card_detail.json',//
+			//url: 'http://47.96.128.18/aiyongka/mobile/index.php/repay/card_detail',
+
+			count_recommended : 'json/count_recommended.json',//
+			//url: 'http://47.96.128.18/aiyongka/mobile/index.php/user/count_recommended',
+			recommended_list : 'json/recommended_list.json',//
+
+			//url: 'http://47.96.128.18/aiyongka/mobile/index.php/user/recommended_list',
+
+
+			//repay_latest : 'http://47.96.128.18/aiyongka/mobile/index.php/repay/repay_latest',//
 		};
 		$scope.reg = {
 			phone : '',
@@ -263,6 +283,8 @@ angular.module("controllers", [])
 			});
 		};
 		$scope.launchCreditNew = function(){
+			$state.go('creditBank',{cardId:$stateParams.cardId})
+
 			//console.log($scope.creditView);
 			var repay_add_confirm = [
 				$scope.api.creditNew,
@@ -286,7 +308,8 @@ angular.module("controllers", [])
 			//return
 			$http({
 				method: 'POST',
-				url: editFlag[0],
+				//url: editFlag[0],
+				url: '',
 				data: editFlag[1],//对提交的数据格式化
 				headers: {
 					'Accept': '*/*',
@@ -316,6 +339,8 @@ angular.module("controllers", [])
 			});
 		};
 		$scope.launchCreditView = function(){
+			$state.go('creditView',{cardId:$stateParams.cardId})
+
 			$scope.creditNew.key = $scope.token;
 			$http({
 				method: 'POST',
@@ -399,6 +424,8 @@ angular.module("controllers", [])
 				var ua = window.navigator.userAgent.toLowerCase();
 				if(ua.match(/MicroMessenger/i) != 'micromessenger'){
 					console.log('微信分享提示遮罩，启动！');
+					$scope.modal.show();
+
 				}else{
 					$scope.modal.show();
 				}
@@ -415,11 +442,32 @@ angular.module("controllers", [])
 
 			switch (toState.name) {
 
+				case 'creditView':
+
+					$http({
+						method: 'POST',
+						url: 'json/repay_add.json',
+
+						data: jsonToStr.transform({key:$scope.token,grade_id:$stateParams.grade_id}),//对提交的数据格式化
+						headers: {
+							'Accept': '*/*',
+							'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+						}
+					}).then(function successCallback(response) {
+						//$scope.bank_list = response.data.data;
+						$scope.creditView = response.data.data;
+
+						console.log($scope.creditView)
+					}, function errorCallback(response) {
+						// 请求失败执行代码
+					});
+					break;
 				case 'promotionDetail':
 
 					$http({
 						method: 'POST',
-						url: 'http://47.96.128.18/aiyongka/mobile/index.php/user/recommended_list',
+						url: $scope.api.recommended_list,
+
 						data: jsonToStr.transform({key:$scope.token,grade_id:$stateParams.grade_id}),//对提交的数据格式化
 						headers: {
 							'Accept': '*/*',
@@ -437,7 +485,7 @@ angular.module("controllers", [])
 
 					$http({
 						method: 'POST',
-						url: 'http://47.96.128.18/aiyongka/mobile/index.php/repay/card_detail',
+						url: $scope.api.card_detail,
 
 						data: jsonToStr.transform({key:$scope.token,card_id:$scope.$stateParams.cardId}),//对提交的数据格式化
 						headers: {
@@ -475,9 +523,22 @@ angular.module("controllers", [])
 					console.log('检测到creditNew重置creditNew！');
 					console.log('creditBank');
 					console.log($scope.$stateParams);
+
+					var latestApiTemp = '';
+					switch ($scope.$stateParams.cardId) {
+						case '7':
+							latestApiTemp = $scope.api.repay_latest7;
+							break;
+						case '10':
+							latestApiTemp = $scope.api.repay_latest10;
+							break;
+						case '26':
+							latestApiTemp = $scope.api.repay_latest26;
+							break;
+					}
 					$http({
 						method: 'POST',
-						url: $scope.api.repay_latest,
+						url: latestApiTemp,
 						data: jsonToStr.transform({key:$scope.token,card_id:$scope.$stateParams.cardId}),//对提交的数据格式化
 						headers: {
 							'Accept': '*/*',
@@ -519,8 +580,8 @@ angular.module("controllers", [])
 
 					$http({
 						method: 'POST',
-						//url: $scope.api.repay_latest,
-						url: 'http://47.96.128.18/aiyongka/mobile/index.php/repay/card_detail',
+						url: $scope.api.card_detail,
+						//url: 'http://47.96.128.18/aiyongka/mobile/index.php/repay/card_detail',
 						data: jsonToStr.transform({key:$scope.token,card_id:$scope.$stateParams.cardId}),//对提交的数据格式化
 						headers: {
 							'Accept': '*/*',
@@ -711,8 +772,7 @@ angular.module("controllers", [])
 
 					$http({
 						method: 'POST',
-						//url: $scope.api.repay_latest,
-						url: 'http://47.96.128.18/aiyongka/mobile/index.php/repay/card_detail',
+						url: $scope.api.card_detail,
 						data: jsonToStr.transform({key:$scope.token,card_id:$scope.$stateParams.cardId}),//对提交的数据格式化
 						headers: {
 							'Accept': '*/*',
@@ -735,7 +795,7 @@ angular.module("controllers", [])
 
 
 						$scope.card_detail =response.data.data;
-						console.log($scope.card_detail);
+						//console.log($scope.card_detail);
 
 						$scope.card_edit.card_id = $scope.card_detail.id;
 						//$scope.card_edit.type = $scope.card_detail.type;
@@ -834,7 +894,9 @@ angular.module("controllers", [])
 								});
 								$http({
 									method: 'POST',
-									url: 'http://47.96.128.18/aiyongka/mobile/index.php/repay/repay_latest',
+									//url: 'http://47.96.128.18/aiyongka/mobile/index.php/repay/repay_latest',
+									url: $scope.api.repay_latest,
+
 									data: jsonToStr.transform({key:$scope.token,card_id:$scope.banks[$scope.bankIndex].id}),//对提交的数据格式化
 									headers: {
 										'Accept': '*/*',
@@ -873,7 +935,8 @@ angular.module("controllers", [])
 				case 'promotionCenter':
 					$http({
 						method: 'POST',
-						url: 'http://47.96.128.18/aiyongka/mobile/index.php/user/count_recommended',
+						url: $scope.api.count_recommended,
+
 						data: jsonToStr.transform({key:$scope.token}),//对提交的数据格式化
 						headers: {
 							'Accept': '*/*',
@@ -904,6 +967,8 @@ angular.module("controllers", [])
 					$scope.checkIdCer = function(){
 						if($scope.my.status_verify > 2){
 							$scope.al('实名认证已通过！请勿重复操作！')
+							$state.go('idCer')
+
 						}else{
 							$state.go('idCer')
 						}
@@ -1132,7 +1197,7 @@ angular.module("controllers", [])
 				if(!$scope.login[x]){
 					//console.log('nooo',x);
 					$scope.fillRequired = 'fillRequired';
-					return
+					//return
 				}
 			}
 			//ipCookie.remove('token');
@@ -1153,7 +1218,7 @@ angular.module("controllers", [])
 				}
 			}).then(function successCallback(response) {
 				//$scope.names = response.data.sites;
-				//console.log(response.data);
+				console.log(response);
 				if(response.data.data){
 					//$scope.al(response.data.data.token);
 					$scope.token = response.data.data.token;

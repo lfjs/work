@@ -166,10 +166,12 @@ angular.module("directives", [])
 			};
 			$scope.$stateParams = $stateParams;
 			$scope.repay_detail = function() {
+				$state.go('creditNew',{cardId:$stateParams.cardId});
+
 				//console.log($scope.plan.repay)
 				$http({
 					method: 'POST',
-					url: 'http://47.96.128.18/aiyongka/mobile/index.php/repay/repay_detail',
+					url: '',
 					data: jsonToStr.transform({key:$scope.token,repay_id:$scope.plan.repay.id}),//对提交的数据格式化
 					headers: {
 						'Accept': '*/*',

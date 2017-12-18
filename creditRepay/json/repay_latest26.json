@@ -1,0 +1,27 @@
+{
+  "code": 1,
+  "msg": "\u6700\u65b0\u8fd8\u6b3e\u8ba1\u5212",
+  "data": {
+    "repay": null,
+    "card": {
+      "id": "26",
+      "user_id": "1000000456",
+      "phone": "18706302611",
+      "realname": "\u6c49*\u4e8c",
+      "idcard": "370202***********2111",
+      "bankcardnum": "0050",
+      "bank_id": "2",
+      "bank_name": "\u5efa\u8bbe\u94f6\u884c",
+      "cvn2": "121",
+      "date_valid": "1212",
+      "date_bill": "20171204",
+      "date_repay": "20171226",
+      "type": "2",
+      "status": "1",
+      "time_create": "1513575744",
+      "time_update": "0",
+      "bank_icon": "img/ccb.png"
+
+    }
+  }
+}
