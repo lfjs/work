@@ -31,26 +31,26 @@ angular.module("controllers", [])
 		};
 		$scope.ls();
 		$scope.api = {
-			reg : 'http://47.96.128.18/aiyongka/mobile/index.php/site/register',//注册
-			verify : 'http://47.96.128.18/aiyongka/mobile/index.php/site/sendMsg',//验证码
+			//reg : 'http://47.96.128.18/aiyongka/mobile/index.php/site/register',//注册
+			//verify : 'http://47.96.128.18/aiyongka/mobile/index.php/site/sendMsg',//验证码
 			login : 'json/login.json',//登录
-			idCer : 'http://47.96.128.18/aiyongka/mobile/index.php/user/verify',//实名认证
-			changePsw : 'http://47.96.128.18/aiyongka/mobile/index.php/site/password_reset',//实名认证
+			//idCer : 'http://47.96.128.18/aiyongka/mobile/index.php/user/verify',//实名认证
+			//changePsw : 'http://47.96.128.18/aiyongka/mobile/index.php/site/password_reset',//实名认证
 			bank_list : 'json/bank_list.json',//登录
 
 			//bank_list : 'http://47.96.128.18/aiyongka/mobile/index.php/site/bank_list',//
 			get_area : 'json/get_area.json',//登录
 
 			//get_area : 'http://47.96.128.18/aiyongka/mobile/index.php/user/get_area',//
-			addCard : 'http://47.96.128.18/aiyongka/mobile/index.php/repay/card_add',//
+			//addCard : 'http://47.96.128.18/aiyongka/mobile/index.php/repay/card_add',//
 			credit : 'json/credit.json',//登录
-			creditView : 'http://47.96.128.18/aiyongka/mobile/index.php/repay/repay_add',//
-			creditNew : 'http://47.96.128.18/aiyongka/mobile/index.php/repay/repay_add_confirm',//
+			//creditView : 'http://47.96.128.18/aiyongka/mobile/index.php/repay/repay_add',//
+			//creditNew : 'http://47.96.128.18/aiyongka/mobile/index.php/repay/repay_add_confirm',//
 			creditPrev : 'json/repay_list.json',//登录
 
 			//creditPrev : 'http://47.96.128.18/aiyongka/mobile/index.php/repay/repay_list',//
-			card_unbind : 'http://47.96.128.18/aiyongka/mobile/index.php/repay/card_unbind',//
-			card_edit : 'http://47.96.128.18/aiyongka/mobile/index.php/repay/card_edit',//
+			//card_unbind : 'http://47.96.128.18/aiyongka/mobile/index.php/repay/card_unbind',//
+			//card_edit : 'http://47.96.128.18/aiyongka/mobile/index.php/repay/card_edit',//
 			//userInfo : 'http://47.96.128.18/aiyongka/mobile/index.php/user/userinfo',//
 			userInfo : 'json/userInfo.json',//登录
 			repay_latest7 : 'json/repay_latest7.json',//
@@ -228,7 +228,7 @@ angular.module("controllers", [])
 		$scope.launchCard_edit = function(){
 			console.log($scope.card_edit)
 			$http({
-				method: 'POST',
+				method: 'GET',
 				url: $scope.api.card_edit,
 				data: jsonToStr.transform($scope.card_edit),//对提交的数据格式化
 				headers: {
@@ -260,7 +260,7 @@ angular.module("controllers", [])
 			confirmPopup.then(function(res) {
 				if(res) {
 					$http({
-						method: 'POST',
+						method: 'GET',
 						url: $scope.api.card_unbind,
 						data: jsonToStr.transform({key:$scope.token,card_id:$scope.banks[$scope.$stateParams.index].id}),//对提交的数据格式化
 						headers: {
@@ -307,7 +307,7 @@ angular.module("controllers", [])
 			console.log('选择提交：',editFlag);
 			//return
 			$http({
-				method: 'POST',
+				method: 'GET',
 				//url: editFlag[0],
 				url: '',
 				data: editFlag[1],//对提交的数据格式化
@@ -343,7 +343,7 @@ angular.module("controllers", [])
 
 			$scope.creditNew.key = $scope.token;
 			$http({
-				method: 'POST',
+				method: 'GET',
 				url: $scope.api.creditView,
 				data: jsonToStr.transform($scope.creditNew),//对提交的数据格式化
 				headers: {
@@ -386,8 +386,9 @@ angular.module("controllers", [])
 		$scope.backToNew = function(){
 			//		http://47.96.128.18/aiyongka/mobile/index.php/repay/repay_delete
 			$http({
-				method: 'POST',
-				url: 'http://47.96.128.18/aiyongka/mobile/index.php/repay/repay_delete',
+				method: 'GET',
+				//url: 'http://47.96.128.18/aiyongka/mobile/index.php/repay/repay_delete',
+				url: '',
 				data: jsonToStr.transform({key:$scope.token,order_id:''}),//对提交的数据格式化
 				headers: {
 					'Accept': '*/*',
@@ -445,7 +446,7 @@ angular.module("controllers", [])
 				case 'creditView':
 
 					$http({
-						method: 'POST',
+						method: 'GET',
 						url: 'json/repay_add.json',
 
 						data: jsonToStr.transform({key:$scope.token,grade_id:$stateParams.grade_id}),//对提交的数据格式化
@@ -465,7 +466,7 @@ angular.module("controllers", [])
 				case 'promotionDetail':
 
 					$http({
-						method: 'POST',
+						method: 'GET',
 						url: $scope.api.recommended_list,
 
 						data: jsonToStr.transform({key:$scope.token,grade_id:$stateParams.grade_id}),//对提交的数据格式化
@@ -484,7 +485,7 @@ angular.module("controllers", [])
 				case 'creditPrev':
 
 					$http({
-						method: 'POST',
+						method: 'GET',
 						url: $scope.api.card_detail,
 
 						data: jsonToStr.transform({key:$scope.token,card_id:$scope.$stateParams.cardId}),//对提交的数据格式化
@@ -500,7 +501,7 @@ angular.module("controllers", [])
 						// 请求失败执行代码
 					});
 					$http({
-						method: 'POST',
+						method: 'GET',
 						url: $scope.api.creditPrev,
 						data: jsonToStr.transform({key:$scope.token,card_id:$scope.$stateParams.cardId}),//对提交的数据格式化
 						headers: {
@@ -537,7 +538,7 @@ angular.module("controllers", [])
 							break;
 					}
 					$http({
-						method: 'POST',
+						method: 'GET',
 						url: latestApiTemp,
 						data: jsonToStr.transform({key:$scope.token,card_id:$scope.$stateParams.cardId}),//对提交的数据格式化
 						headers: {
@@ -579,7 +580,7 @@ angular.module("controllers", [])
 					console.log($scope.creditNew);
 
 					$http({
-						method: 'POST',
+						method: 'GET',
 						url: $scope.api.card_detail,
 						//url: 'http://47.96.128.18/aiyongka/mobile/index.php/repay/card_detail',
 						data: jsonToStr.transform({key:$scope.token,card_id:$scope.$stateParams.cardId}),//对提交的数据格式化
@@ -771,7 +772,7 @@ angular.module("controllers", [])
 				case 'creditEdit':
 
 					$http({
-						method: 'POST',
+						method: 'GET',
 						url: $scope.api.card_detail,
 						data: jsonToStr.transform({key:$scope.token,card_id:$scope.$stateParams.cardId}),//对提交的数据格式化
 						headers: {
@@ -783,7 +784,7 @@ angular.module("controllers", [])
 						//console.log(response.data);
 
 						$http({
-							method: 'POST',
+							method: 'GET',
 							url: $scope.api.bank_list,
 						}).then(function successCallback(response) {
 							//console.log(response)
@@ -821,7 +822,7 @@ angular.module("controllers", [])
 				case 'main.credit':
 					//———————————————白底logo—————————————————
 					$http({
-						method: 'POST',
+						method: 'GET',
 						url: $scope.api.credit,
 						data: jsonToStr.transform({key:$scope.token,type:2}),//对提交的数据格式化
 						headers: {
@@ -842,7 +843,7 @@ angular.module("controllers", [])
 					//———————————————白底logo—————————————————
 					//console.log($state);
 					$http({
-						method: 'POST',
+						method: 'GET',
 						url: $scope.api.credit,
 						data: jsonToStr.transform({key:$scope.token}),//对提交的数据格式化
 						headers: {
@@ -868,7 +869,7 @@ angular.module("controllers", [])
 								$scope.card_edit.date_repay = $scope.banks[$scope.bankIndex].date_repay;
 								//console.log($scope.card_edit)
 								$http({
-									method: 'POST',
+									method: 'GET',
 									url: $scope.api.bank_list,
 								}).then(function successCallback(response) {
 									//console.log(response)
@@ -878,7 +879,7 @@ angular.module("controllers", [])
 									// 请求失败执行代码
 								});
 								$http({
-									method: 'POST',
+									method: 'GET',
 									url: $scope.api.creditPrev,
 									data: jsonToStr.transform({key:$scope.token,card_id:$scope.banks[$scope.bankIndex].id}),//对提交的数据格式化
 									headers: {
@@ -893,7 +894,7 @@ angular.module("controllers", [])
 									// 请求失败执行代码
 								});
 								$http({
-									method: 'POST',
+									method: 'GET',
 									//url: 'http://47.96.128.18/aiyongka/mobile/index.php/repay/repay_latest',
 									url: $scope.api.repay_latest,
 
@@ -934,7 +935,7 @@ angular.module("controllers", [])
 			switch (toState.name) {
 				case 'promotionCenter':
 					$http({
-						method: 'POST',
+						method: 'GET',
 						url: $scope.api.count_recommended,
 
 						data: jsonToStr.transform({key:$scope.token}),//对提交的数据格式化
@@ -974,7 +975,7 @@ angular.module("controllers", [])
 						}
 					};
 					$http({
-						method: 'POST',
+						method: 'GET',
 						url: $scope.api.userInfo,
 						data: jsonToStr.transform({key:$scope.token}),//对提交的数据格式化
 						headers: {
@@ -992,7 +993,7 @@ angular.module("controllers", [])
 				case 'addCard':
 					console.log('addCard');
 					$http({
-						method: 'POST',
+						method: 'GET',
 						url: $scope.api.userInfo,
 						data: jsonToStr.transform({key:$scope.token}),//对提交的数据格式化
 						headers: {
@@ -1009,7 +1010,7 @@ angular.module("controllers", [])
 				case 'idCer':
 					console.log('idCer');
 					$http({
-						method: 'POST',
+						method: 'GET',
 						url: $scope.api.bank_list,
 					}).then(function successCallback(response) {
 						$scope.bank_list = response.data.data;
@@ -1018,7 +1019,7 @@ angular.module("controllers", [])
 						// 请求失败执行代码
 					});
 					$http({
-						method: 'POST',
+						method: 'GET',
 						url: $scope.api.get_area,
 						data: jsonToStr.transform({key:$scope.token}),//对提交的数据格式化
 						headers: {
@@ -1034,7 +1035,7 @@ angular.module("controllers", [])
 						$scope.$watch('idCer.bank_province_id', function(newValue,oldValue, scope) {
 							//console.log(newValue,oldValue);
 							$http({
-								method: 'POST',
+								method: 'GET',
 								url: $scope.api.get_area,
 								data: jsonToStr.transform({key:$scope.token,parent_id:$scope.idCer.bank_province_id}),//对提交的数据格式化
 								headers: {
@@ -1051,7 +1052,7 @@ angular.module("controllers", [])
 						$scope.$watch('idCer.bank_city_id', function(newValue,oldValue, scope) {
 							//console.log(newValue,oldValue);
 							$http({
-								method: 'POST',
+								method: 'GET',
 								url: $scope.api.get_area,
 								data: jsonToStr.transform({key:$scope.token,parent_id:$scope.idCer.bank_city_id}),//对提交的数据格式化
 								headers: {
@@ -1074,7 +1075,7 @@ angular.module("controllers", [])
 		});
 		$scope.launchAddCard = function(){
 			$http({
-				method: 'POST',
+				method: 'GET',
 				url: $scope.api.addCard,
 				data: jsonToStr.transform($scope.addCard),//对提交的数据格式化
 				headers: {
@@ -1105,7 +1106,7 @@ angular.module("controllers", [])
 				}
 			}
 			$http({
-				method: 'POST',
+				method: 'GET',
 				url: $scope.api.verify,
 				data: jsonToStr.transform($scope.verifyPsw),//对提交的数据格式化
 				headers: {
@@ -1147,7 +1148,7 @@ angular.module("controllers", [])
 				}
 			}
 			$http({
-				method: 'POST',
+				method: 'GET',
 				url: $scope.api.changePsw,
 				data: jsonToStr.transform($scope.changePsw),//对提交的数据格式化
 				headers: {
@@ -1174,7 +1175,7 @@ angular.module("controllers", [])
 			}
 			console.log($scope)
 			$http({
-				method: 'POST',
+				method: 'GET',
 				url: $scope.api.idCer,
 				data: jsonToStr.transform($scope.idCer),//对提交的数据格式化
 				headers: {
@@ -1246,7 +1247,7 @@ angular.module("controllers", [])
 			}
 			//console.log(222)
 			$http({
-				method: 'POST',
+				method: 'GET',
 				url: $scope.api.verify,
 				data: jsonToStr.transform($scope.verify),//对提交的数据格式化
 				headers: {
@@ -1288,7 +1289,7 @@ angular.module("controllers", [])
 				}
 			}
 			$http({
-				method: 'POST',
+				method: 'GET',
 				url: $scope.api.reg,
 				data: jsonToStr.transform($scope.reg),//对提交的数据格式化
 				headers: {

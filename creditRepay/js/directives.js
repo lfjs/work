@@ -95,8 +95,9 @@ angular.module("directives", [])
 							//console.log(loadEvent.target.result.replace("data:image/png;base64,", ""))
 							scope.uploadImg.file = encodeURIComponent(loadEvent.target.result.replace(/data(.*)base64,/, ""));
 							$http({
-								method: 'POST',
-								url: 'http://47.96.128.18/aiyongka/mobile/index.php/user/upload',
+								method: 'GET',
+								//url: 'http://47.96.128.18/aiyongka/mobile/index.php/user/upload',
+								url: '',
 								data: jsonToStr.transform(scope.uploadImg),//对提交的数据格式化
 								headers: {
 									'Accept': '*/*',
@@ -170,7 +171,7 @@ angular.module("directives", [])
 
 				//console.log($scope.plan.repay)
 				$http({
-					method: 'POST',
+					method: 'GET',
 					url: '',
 					data: jsonToStr.transform({key:$scope.token,repay_id:$scope.plan.repay.id}),//对提交的数据格式化
 					headers: {
@@ -219,8 +220,9 @@ angular.module("directives", [])
 					console.log($scope.plan.repay);
 					if(res) {
 						$http({
-							method: 'POST',
-							url: 'http://47.96.128.18/aiyongka/mobile/index.php/repay/repay_cancel',
+							method: 'GET',
+							//url: 'http://47.96.128.18/aiyongka/mobile/index.php/repay/repay_cancel',
+							url: '',
 							data: jsonToStr.transform({key:$scope.token,repay_id:$scope.plan.repay.id}),//对提交的数据格式化
 							headers: {
 								'Accept': '*/*',
@@ -257,8 +259,9 @@ angular.module("directives", [])
 					buttonClicked: function(index) {
 						console.log(index,this);
 						$http({
-							method: 'POST',
-							url: 'http://47.96.128.18/aiyongka/mobile/index.php/repay/repay_start',
+							method: 'GET',
+							//url: 'http://47.96.128.18/aiyongka/mobile/index.php/repay/repay_start',
+							url: '',
 							data: jsonToStr.transform({key:$scope.token,repay_id:$scope.plan.repay.id}),//对提交的数据格式化
 							headers: {
 								'Accept': '*/*',

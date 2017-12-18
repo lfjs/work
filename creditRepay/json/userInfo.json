@@ -35,8 +35,8 @@
     "bankcard_b": "http:\/\/47.96.128.18\/aiyongka\/data\/upfiles\/image\/verify\/user\/1000000457\/05652095342302699.jpg",
     "idcard_hand": "http:\/\/47.96.128.18\/aiyongka\/data\/upfiles\/image\/verify\/user\/1000000457\/05652095161598482.jpg",
     "bank": "\u62db\u5546\u94f6\u884c",
-    "bank_icon": "http:\/\/47.96.128.18\/aiyongka\/mobile\/static\/images\/bank\/2\/CMB.png",
-    "share_url": "http:\/\/47.96.128.18\/aiyongka\/wap\/#\/main\/reg?refer_phone=15615102651",
+    "bank_icon": "img/ICBC.png",
+    "share_url": "http:\/\/\/aiyongka\/wap\/#\/main\/reg?refer_phone=15615102651",
     "grade_name": "\u94bb\u77f3\u4f1a\u5458",
     "point": 0,
     "count_card": 2
