@@ -1,7 +1,7 @@
 
 
 <ion-view view-title="预览计划">
-	<ion-content class=" bg_f4">
+	<ion-content class="paddingTop bg_f4">
 
 		<div ng-repeat="x in creditView.repay.detail_format" class="planItem">
 			<table>
@@ -22,7 +22,9 @@
 		</div>
 		<div class="table">
 			<div class="cell" style="width: 50%;padding: 0 12px;">
-				<button class="button button-light button-block" ui-sref="creditNew({'cardId':banks[bankIndex].id,'index':bankIndex})">返回修改计划</button>
+				<button ng-click="backToNew()" class="button button-light button-block">
+					返回修改计划
+				</button>
 			</div>
 			<div class="cell" style="padding: 0 12px;">
 				<button ng-click="launchCreditNew()" class="button button-positive button-block">确认提交</button>

@@ -1,25 +1,18 @@
 
 
 <ion-view view-title="推广详情">
-	<ion-content style="padding: 16px 9%;" class=" promotionDetail">
+	<ion-content style="padding: 16px 9%;padding-top: 60px" class=" promotionDetail">
 		<table style="line-height: 2.5">
 			<tr class="text_bold">
-				<th>微信号</th>
-				<th>操作</th>
+				<th>手机号</th>
+				<th>状态</th>
 			</tr>
-			<tr>
+			<tr ng-repeat="x in promotionDetail">
 				<td>
 					<img src="img/img_zanwushuju.png" alt=""/>
-					vision888
+					{{x.phone}}
 				</td>
-				<td>已注册</td>
-			</tr>
-			<tr>
-				<td>
-					<img src="img/img_zanwushuju.png" alt=""/>
-					vision888
-				</td>
-				<td>已实名</td>
+				<td>{{x.status}}</td>
 			</tr>
 		</table>
 	</ion-content>

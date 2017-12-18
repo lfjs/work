@@ -3,29 +3,33 @@
 		<div class="login content has-header">
 			<!--<form ng-submit="myFunc()" action="http://www.aiyongka.cn/mobile/index.php/site/register" method="post" >-->
 			<form>
-			<div class="list">
-				<div style="width: 32%;float: right;margin-top: -1px;">
-					<button ng-click="regVerify()" style="margin: 0" class="button button-block button-light">验证</button>
+				<div class="list">
+					<!--<input type="checkbox"  ng-model="verifyStaDisabled"/>-->
+					<!--<input type="text"  ng-model="verifyStaDisabled"/>-->
+					<div style="width: 32%;float: right;margin-top: -1px;">
+						<button ng-disabled="verifyStaDisabled" ng-click="regVerify()" style="margin: 0" class="button button-block button-light">
+							{{verifySta||'验证'}}
+						</button>
+					</div>
+					<label style="width: 64%" class="item item-input {{reg.phone?'':fillRequired}} {{reg.phone?'':regVerifyFillRequired}}">
+						<input ng-model="reg.phone" type="number" placeholder="手机号">
+					</label>
 				</div>
-				<label style="width: 64%" class="item item-input">
-					<input ng-model="reg.phone" type="text" placeholder="手机号">
-				</label>
-			</div>
-			<div class="list">
-				<label class="item item-input">
-					<input ng-model="reg.verify_code" type="text" placeholder="验证码">
-				</label>
-			</div>
-			<div class="list">
-				<label class="item item-input">
-					<input ng-model="reg.password" type="password" placeholder="6-16位登录密码">
-				</label>
-			</div>
-			<div class="list">
-				<label class="item item-input">
-					<input ng-model="reg.refer_phone" type="text" placeholder="推荐人推荐码">
-				</label>
-			</div>
+				<div class="list">
+					<label class="item item-input {{reg.verify_code?'':fillRequired}}">
+						<input ng-model="reg.verify_code" type="number" placeholder="验证码">
+					</label>
+				</div>
+				<div class="list">
+					<label class="item item-input {{reg.password?'':fillRequired}}">
+						<input ng-model="reg.password" type="password" placeholder="6-16位登录密码">
+					</label>
+				</div>
+				<div class="list">
+					<label class="item item-input">
+						<input ng-model="reg.refer_phone" type="number" placeholder="推荐人推荐码">
+					</label>
+				</div>
 			<!--<div class="list">-->
 				<!--<label class="item item-input">-->
 					<!--<input type="text" placeholder="激活码" >-->
@@ -34,6 +38,7 @@
 			<div class="">
 				<!--<button ng-click="launchReg()" class="button button-block button-positive">注册</button>-->
 				<button ng-click="launchReg()" class="button button-block button-positive">注册</button>
+				<button class="button button-block button-positive">下载APP</button>
 			</div>
 			</form>
 		</div>

@@ -1,6 +1,6 @@
 <div class="creditCard box_shadow">
 	<div class="cardInfo a bg_blue">
-		<img ng-src="img/{{matchLogo(bank.bank_name)}}logo.png" alt=""/>
+		<img ng-src="{{bank.bank_icon}}" alt=""/>
 		<span class="a">{{bank.bank_name}} | 尾号{{bank.bankcardnum|last4}}</span>
 		<span class="b">{{bank.realname|hideMiddleName}}</span>
 	</div>

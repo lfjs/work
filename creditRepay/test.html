@@ -15,7 +15,7 @@
 	<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
-<a href="sms://">打开我的app</a>
+<a onclick="alert('weixin')" href="weixin://">打开我的app</a>
 <p><button id="btn">点我点我啊！alert，不会弹出</button></p>
 <p><button id="btn2">点我点我啊！alert2，虽然有alert和info，info执行，但是alert不弹出</button></p>
 <p><button id="btninfo">点我点我啊！info可以</button></p>
@@ -25,7 +25,7 @@
 	$(function(){
 //		var aaa = 'baiduboxapp://';
 //		var aaa = 'mqq://';
-		var aaa = 'sms://';
+		var aaa = 'weixin://';
 		var $info = $('#info');
 		function info(msg){
 			var p = $('<p>'+msg+'</p>');

@@ -1,0 +1,74 @@
+
+<ion-view view-title="推广中心">
+	<ion-content class="paddingTop bg_f4">
+		<div style="background-color: #35a3fe;color: white; padding: 20px;position: relative">
+			<echarts-bar style="position: absolute;width: 100%;left: 0;top: 15px;" id="promotionBarCharts" data="promotionBarChartsData"></echarts-bar>
+
+
+			<div class="text-center" style="line-height: 2;margin-top: 45px;">
+				<div style="font-size: 16px">{{count_recommended.total==0?'0':count_recommended.total||'？'}}人</div>
+				<div style="font-size: 13px">推广总人数</div>
+			</div>
+			<!--<div>{{count_recommended.total==0?'0':count_recommended.total||'？'}}</div>-->
+			<!--<div id="container" style="width: 100%; height: 200px; margin: 0 auto"></div>-->
+			<!--<div ng-controller="myController">-->
+				<!--<div id="container">Placeholder for chart</div>-->
+
+				<!--<input type="text" ng-model="aaa"/>-->
+				<!--<div>{{aaa}}</div>-->
+			<!--</div>-->
+
+			<div class="text-center">
+				<button class="button button-positive" style="border-color: white;line-height: 25px;min-width: 107px;margin-top: 35px;">会员管理</button>
+			</div>
+
+		</div>
+		<div class="table text-center" style="background-color: #3091ec;color: white;padding: 16px 0;">
+			<div style="vertical-align: middle;border-right: 1px solid rgba(255,255,255,.5);" class="cell">
+				<div style="margin-bottom: 10px">{{count_recommended.active==0?'0':count_recommended.active||'？'}}</div>
+				<div>已激活</div>
+			</div>
+			<div style="vertical-align: middle;border-right: 1px solid rgba(255,255,255,.5);" class="cell">
+				<div style="margin-bottom: 10px">{{count_recommended.unactivated==0?'0':count_recommended.unactivated||'？'}}</div>
+				<div>未激活</div>
+			</div>
+			<div style="vertical-align: middle;border-right: 1px solid rgba(255,255,255,.5);" class="cell">
+				<div style="margin-bottom: 10px">{{count_recommended.total==0?'0':count_recommended.total||'？'}}</div>
+				<div>已推荐</div>
+			</div>
+		</div>
+		<div style="background-color: white;">
+			<div class="ionic list">
+
+				<a  ui-sref="promotionDetail({'grade_id':4})" class="item item-icon-left" style="border: 0;padding: 20px 16px;">
+					<i style="left: 17px;" class="icon">
+						<img src="img/tjjl_zuanshi.png" style="vertical-align: middle;height: 20px" alt=""/>
+					</i>
+					<span style="color: #555;font-weight: bold">钻石</span>
+					<span style="color: #b8b8b8;padding-left: 8px;">(推荐人数:{{count_recommended.grade_4==0?'0':count_recommended.grade_4||'？'}})</span>
+				</a>
+				<a ui-sref="promotionDetail({'grade_id':3})" class="item item-icon-left" style="border: 0;padding: 20px 16px;">
+					<i style="left: 17px;" class="icon">
+						<img src="img/tjjl_jinpai.png" style="vertical-align: middle;height: 20px" alt=""/>
+					</i>
+					<span style="color: #555;font-weight: bold">金牌</span>
+					<span style="color: #b8b8b8;padding-left: 8px;">(推荐人数:{{count_recommended.grade_3==0?'0':count_recommended.grade_3||'？'}})</span>
+				</a>
+				<a ui-sref="promotionDetail({'grade_id':2})" class="item item-icon-left" style="border: 0;padding: 20px 16px;">
+					<i style="left: 17px;" class="icon">
+						<img src="img/tjjl_yinpai.png" style="vertical-align: middle;height: 20px" alt=""/>
+					</i>
+					<span style="color: #555;font-weight: bold">银牌</span>
+					<span style="color: #b8b8b8;padding-left: 8px;">(推荐人数:{{count_recommended.grade_2==0?'0':count_recommended.grade_2||'？'}})</span>
+				</a>
+				<a ui-sref="promotionDetail({'grade_id':1})" class="item item-icon-left" style="border: 0;padding: 20px 16px;">
+					<i style="left: 17px;" class="icon">
+						<img src="img/tjjl_shanghu.png" style="vertical-align: middle;height: 20px" alt=""/>
+					</i>
+					<span style="color: #555;font-weight: bold">商户</span>
+					<span style="color: #b8b8b8;padding-left: 8px;">(推荐人数:{{count_recommended.grade_1==0?'0':count_recommended.grade_1||'？'}})</span>
+				</a>
+			</div>
+		</div>
+	</ion-content>
+</ion-view>

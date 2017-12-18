@@ -1,11 +1,11 @@
 
 
 <ion-view view-title="制定计划">
-	<ion-content class=" bg_f4">
+	<ion-content class="paddingTop bg_f4">
 		<!--<div style="margin: 16px" bank-name='$stateParams.name' card-directive></div>-->
-		<div style="margin: 16px" bank='banks[$stateParams.index]' card-directive></div>
+		<div style="margin: 16px" bank='card_detail' card-directive></div>
 
-		<div hidden>{{creditNew.card_id = banks[$stateParams.index].id}}</div>
+		<div hidden>{{creditNew.card_id = card_detail.id}}</div>
 		<div class="planBox">
 			<div class="list">
 				<label style="border: 0" class="item item-input">
@@ -38,11 +38,11 @@
 			<p style="padding: 0;border: 0" ng-click="showDatepicker()" class="text_bold item">选择还款日期：
 				<i style="float: right" class="icon ion-chevron-up {{onezoneDatepicker.showDatepicker?'ro_0':'ro_180'}}"></i>
 			</p>
-			<div hidden>{{creditNew.date}}</div>
+			<div hidden>{{dateDisable}}</div>
+			<div hidden>{{onezoneDatepicker.disableDates+'121'}}</div>
 			<div>
-				<span class="dateSelected" ng-click="dateSelectedRemove(x)" ng-repeat="x in creditNew.date.split(',')">{{x|dateCn}}</span>
+				<span ng-if="0" class="dateSelected" ng-click="dateSelectedRemove(x)" ng-repeat="x in creditNew.date.split(',')">{{x|dateCn}}</span>
 			</div>
-            <div>{{hl}}</div>
 			<onezone-datepicker datepicker-object="onezoneDatepicker">
 				<!--<button class="button button-block button-outline button-positive show-onezone-datepicker">-->
 					<!--{{onezoneDatepicker.highlights}}-->

@@ -2,13 +2,13 @@
 	<!--<div>{{[token]}}</div>-->
 	<!--<div>{{plan.repay?plan.repay.status:0}}</div>-->
 	<!--<div>{{plan.repay.time_create}}</div>-->
-	<!--<div>{{plan.repay}}</div>-->
+	<!--<div>{{plan.repay.id}}</div>-->
 	<!--<div ng-if="plan.repay&&bank.plan.status" class="creditPlanA creditPlanB text-center box_shadow">-->
-	<div ng-if="plan.repay&&(plan.repay.status==2||plan.repay.status=='处理中')" class="creditPlanA creditPlanB text-center box_shadow">
+	<div ng-if="plan.repay&&(plan.repay.status==2||plan.repay.status=='处理中'||plan.repay.status=='撤销')" class="creditPlanA creditPlanB text-center box_shadow">
 		<img class="chainLeft" src="img/lianjie.png" alt=""/>
 		<img class="chainRight" src="img/lianjie.png" alt=""/>
 
-		<div class="a">进行中</div>
+		<div class="a">{{plan.repay.status=='撤销'?plan.repay.status:'进行中'}}</div>
 		<p class="a text_bold text-left">{{plan.repay.time_create*1000|date:'yyyy-MM-dd'}}</p>
 		<p class="a text-left">计划配置： {{plan.repay.days}} 天 {{plan.repay.times_consume}} 笔</p>
 		<p class="a text-left">手续费：{{plan.repay.fee}}</p>
@@ -32,7 +32,7 @@
 	</div>
 	<!--<div ng-if="plan.repay&&!bank.plan.status" class="creditPlanA text-center box_shadow">-->
 	<!--<div ng-if="plan.repay&&plan.repay.status==1" class="creditPlanA text-center box_shadow">-->
-	<div ng-if="plan.repay&&plan.repay.status==1" class="creditPlanA text-center box_shadow">
+	<div ng-if="plan.repay&&(plan.repay.status==1||plan.repay.status=='未执行')" class="creditPlanA text-center box_shadow">
 		<img class="chainLeft" src="img/lianjie.png" alt=""/>
 		<img class="chainRight" src="img/lianjie.png" alt=""/>
 		<div class="a">未执行</div>
@@ -42,7 +42,7 @@
 		<hr/>
 		<table style="margin-top: 14px">
 			<tr>
-				<td ui-sref="creditNew">
+				<td ng-click="repay_detail()">
 					<img style="width: 32px" class="b" src="img/xiugaijihua.png" alt=""/>
 					<div style="margin-top: 10px;color: #333">修改计划</div>
 				</td>

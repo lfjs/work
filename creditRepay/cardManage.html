@@ -5,11 +5,12 @@
 
 		<!--<div>{{banks}}</div>-->
 		<div ng-repeat="x in banks" class="cardManageItem">
-			<img ng-src="img/{{matchLogo(x.bank_name)}}logo.png" alt=""/>
+			<img ng-src="{{x.bank_icon}}" alt=""/>
 			<div class="cardManageInfo">
 				<p class="text_bold">{{x.bank_name}}</p>
-				<p>{{x.bank_name}}</p>
-				<div>{{x.bankcardnum|cardUniform}}</div>
+				<!--<p>{{x.bank_name}}</p>-->
+				<!--<div>{{x.bankcardnum|cardUniform}}</div>-->
+				<div>{{x.bankcardnum}}</div>
 			</div>
 			<div class="text_bold cardManageClass">{{x.type==1?'借记卡':'信用卡'}}</div>
 		</div>

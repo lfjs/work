@@ -1,12 +1,19 @@
 
 <ion-view view-title="推广">
-	<ion-content class="padding bg_f4">
-		<div style="background-color: white;border-radius: 6px;padding: 24px;margin-bottom: 18px">
-			<button ui-sref="promotionDetail" style="position: absolute;right: 0;top: 13px;color: #333" class="button button-clear button-light">推荐记录</button>
+	<ion-content class="padding bg_f4" style="padding-top: 16px">
+		<div style="background-color: white;border-radius: 6px;padding: 24px;margin-bottom: 18px;position: relative">
+			<!--<button ui-sref="promotionDetail" style="position: absolute;right: 0;top: 13px;color: #333" class="button button-clear button-light">推荐记录</button>-->
+			<button ui-sref="promotionCenter" style="position: absolute;right: 0;top: 13px;color: #333" class="button button-clear button-light">
+				推荐记录
+			</button>
 
 			<p style="margin-bottom: 22px" class="text_bold text-center">我的二维码</p>
-			<img style="width: 130px;display: block;margin: 0 auto;border: 2px solid #3392ff;padding: 7px;border-radius: 6px;margin-bottom: 22px;" src="img/er.png" alt=""/>
-			<button style="display: block;margin: 0 auto;min-width: 220px;margin-bottom: 10px;" class=" button button-positive bg_blue" >一键分享</button>
+			<!--<div>{{my.share_url}}</div>-->
+			<qrcode size="112" data="{{my.share_url}}"></qrcode>
+			<!--<img ng-src="{{my.qrcode||'img/img_zanwushuju.png'}}" style="width: 130px;display: block;margin: 0 auto;border: 2px solid #3392ff;padding: 7px;border-radius: 6px;margin-bottom: 22px;" alt=""/>-->
+			<button  ng-click="oneShare()" style="display: block;margin: 0 auto;min-width: 220px;margin-bottom: 10px;" class=" button button-positive bg_blue" >
+				一键分享
+			</button>
 
 		</div>
 		<div style="background-color: white;border-radius: 6px;padding: 24px;">
@@ -34,18 +41,4 @@
 		<br/>
 		<br/>
 	</ion-content>
-	<div style="padding: 7px" class="tabs tabs-icon-top">
-		<a class="tab-item " ui-sref="credit">
-			<img style="width: 26px" src="img/shouye.png" alt=""/>
-			首页
-		</a>
-		<a class="tab-item active" ui-sref="promotion">
-			<img style="width: 26px" src="img/tuiguang_s.png" alt=""/>
-			推广
-		</a>
-		<a class="tab-item" ui-sref="my">
-			<img style="width: 26px" src="img/wode.png" alt=""/>
-			我的
-		</a>
-	</div>
 </ion-view>

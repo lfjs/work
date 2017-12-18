@@ -1,32 +1,52 @@
 angular.module("controllers", [])
-	.controller('MyCtrl', function($scope,$stateParams, $ionicPopup ,$state,$http,jsonToStr,ipCookie,$filter,$rootScope,$ionicHistory) {
+	.controller('MyCtrl', function($ionicModal,$window,$timeout,$ionicNavBarDelegate,$scope,$stateParams, $ionicPopup ,$state,$http,jsonToStr,ipCookie,$filter,$rootScope,$ionicHistory) {
 		$scope.$stateParams = $stateParams;
-		//$scope.checkBackToLog = function(msg){
-		//	//if(response.data.msg.indexOf("请登录")+1) $state.go('login');
-		//	if(msg.indexOf("请登录")+1){
-		//		$state.go('login');
-		//		return false
-		//	}else return true
-		//};
+		$scope.checkBackToLog = function(msg){
+			//if(response.data.msg.indexOf("请登录")+1) $state.go('login');
+			if(msg.indexOf("请登录")+1){
+				$state.go('login');
+				return false
+			}else return true
+		};
+		$scope.promotionBarChartsData = [
+			{value:55, name:''},{value:56,name:''} //Berlin
+		];
+
+		$scope.ifApp = true;
+
+		var ua = window.navigator.userAgent.toLowerCase();
+		//alert(ua);
+		//$scope.ua = ua;
+		if(ua.match(/aiyongka/i) == 'aiyongka'){
+			$scope.ifApp = false;
+		}else{
+			$scope.ifApp = true;
+		}
+		$scope.creditBank =
+			ipCookie('creditBank')||
+			{};
 		$scope.ls = function() {
 			console.log($scope)
+			console.log($stateParams)
 		};
 		$scope.ls();
 		$scope.api = {
-			reg : 'http://www.aiyongka.cn/mobile/index.php/site/register',//注册
-			verify : 'http://www.aiyongka.cn/mobile/index.php/site/sendMsg',//验证码
-			login : 'http://www.aiyongka.cn/mobile/index.php/site/login',//登录
-			idCer : 'http://www.aiyongka.cn/mobile/index.php/user/verify',//实名认证
-			changePsw : 'http://www.aiyongka.cn/mobile/index.php/site/password_reset',//实名认证
-			bank_list : 'http://www.aiyongka.cn/mobile/index.php/site/bank_list',//
-			get_area : 'http://www.aiyongka.cn/mobile/index.php/user/get_area',//
-			addCard : 'http://www.aiyongka.cn/mobile/index.php/repay/card_add',//
-			credit : 'http://www.aiyongka.cn/mobile/index.php/repay/card_list',//
-			creditView : 'http://www.aiyongka.cn/mobile/index.php/repay/repay_add',//
-			creditNew : 'http://www.aiyongka.cn/mobile/index.php/repay/repay_add_confirm',//
-			creditPrev : 'http://www.aiyongka.cn/mobile/index.php/repay/repay_list',//
-			card_unbind : 'http://www.aiyongka.cn/mobile/index.php/repay/card_unbind',//
-			card_edit : 'http://www.aiyongka.cn/mobile/index.php/repay/card_edit',//
+			reg : 'http://47.96.128.18/aiyongka/mobile/index.php/site/register',//注册
+			verify : 'http://47.96.128.18/aiyongka/mobile/index.php/site/sendMsg',//验证码
+			login : 'http://47.96.128.18/aiyongka/mobile/index.php/site/login',//登录
+			idCer : 'http://47.96.128.18/aiyongka/mobile/index.php/user/verify',//实名认证
+			changePsw : 'http://47.96.128.18/aiyongka/mobile/index.php/site/password_reset',//实名认证
+			bank_list : 'http://47.96.128.18/aiyongka/mobile/index.php/site/bank_list',//
+			get_area : 'http://47.96.128.18/aiyongka/mobile/index.php/user/get_area',//
+			addCard : 'http://47.96.128.18/aiyongka/mobile/index.php/repay/card_add',//
+			credit : 'http://47.96.128.18/aiyongka/mobile/index.php/repay/card_list',//
+			creditView : 'http://47.96.128.18/aiyongka/mobile/index.php/repay/repay_add',//
+			creditNew : 'http://47.96.128.18/aiyongka/mobile/index.php/repay/repay_add_confirm',//
+			creditPrev : 'http://47.96.128.18/aiyongka/mobile/index.php/repay/repay_list',//
+			card_unbind : 'http://47.96.128.18/aiyongka/mobile/index.php/repay/card_unbind',//
+			card_edit : 'http://47.96.128.18/aiyongka/mobile/index.php/repay/card_edit',//
+			userInfo : 'http://47.96.128.18/aiyongka/mobile/index.php/user/userinfo',//
+			repay_latest : 'http://47.96.128.18/aiyongka/mobile/index.php/repay/repay_latest',//
 		};
 		$scope.reg = {
 			phone : '',
@@ -39,8 +59,8 @@ angular.module("controllers", [])
 			type : 'reg'
 		};
 		$scope.login = {
-			phone : '18706302611',
-			password : '111111'
+			phone : '',
+			password : ''
 		};
 		//$scope.token = 'de402e0f00bf735571ef217cbdec486a';
 		$scope.token = ipCookie('token');
@@ -69,29 +89,30 @@ angular.module("controllers", [])
 		$scope.bankArea = '';
 		$scope.idCer = {
 			key: $scope.token,
-			merchant_name: '加帕里图书馆',
-			realname: '汉字',
-			idcard: '370202199011112111',
-			bankcardnum: 622700000000000,
-			bankcardnum_confirm: 622700000000000,
-			bank_id: 1111,
-			bank_branch: '加帕里支行',
-			bank_province_id: 1111,
-			bank_city_id: 222,
-			bank_area_id: 33,
-			bank_address: 1111,
-			address: '加帕里公园',
+			merchant_name: '',
+			realname: '',
+			idcard: '',
+			bankcardnum: '',
+			bankcardnum_confirm: '',
+			bank_id: '',
+			bank_branch: '',
+			bank_province_id: '',
+			bank_city_id: '',
+			bank_area_id: '',
+			bank_address: '',
+			address: '',
 			idcard_f: '',
 			idcard_b: '',
 			bankcard_f: '',
 			bankcard_b: '',
 			idcard_hand: '',
+			cnaps_code: '',
 		};
 		$scope.changePsw = {
-			phone:18706302614,
-			verify_code:111111,
-			password:111111,
-			password_confirm:111111,
+			phone:'',
+			verify_code:'',
+			password:'',
+			password_confirm:'',
 		};
 		$scope.verifyPsw = {
 			phone : $scope.changePsw.phone,
@@ -101,81 +122,44 @@ angular.module("controllers", [])
 		$scope.get_areaCityName = '';
 		$scope.get_areaAreaName = '';
 		$scope.bank_addressName = '';
+		$scope.billDate = [];
+		for(var i=1;i<29;i++){
+			var temp = '00000'+i;
+			temp = temp.match(/..$/)[0];
+			$scope.billDate.push(temp)
+		}
+		// check for ios device
+		nP = navigator.platform;
+		if (nP == "iPad" || nP == "iPhone" || nP == "iPod" || nP == "iPhone Simulator" || nP == "iPad Simulator"){
+			//$scope.cardKind = [{id:1,name:'借记卡'}, {id:2,name:'信用卡'}];
+			$scope.cardKind = [];
+		}else{
+			//$scope.cardKind = [];
+			$scope.cardKind = [{id:1,name:'借记卡'}, {id:2,name:'信用卡'}];
+		}
+
 		$scope.addCard = {
 			key: '',
-			type: 1,
-			phone: 18700000000,
-			bankcardnum: 622700000000000,
-			bank_id: 1,
-			cvn2: 134,
-			date_valid: '0125',
-			date_bill: '01',
-			date_repay: '25',
+			type: 2,
+			phone: '',
+			bankcardnum: '',
+			bank_id: '',
+			cvn2: '',
+			date_valid: '',
+			date_bill: '',
+			date_repay: '',
 		};
 		$scope.bankIndex = '';
 		$scope.banks = [
-			{
-				bank_id: "1",
-				bank_name: "工商银行",
-				bankcardnum: "622700000000010",
-				cvn2: "134",
-				date_bill: "20171101",
-				date_repay: "20171125",
-				date_valid: "0125",
-				id: "10",
-				idcard: "370202199011112111",
-				phone: "18700000000",
-				realname: "汉字二",
-				status: "未处理",
-				time_create: "1511923249",
-				time_update: "0",
-				type: "1",
-				user_id: "1000000456"
-			},
-			{
-				bank_id: "1",
-				bank_name: "华夏银行",
-				bankcardnum: "622700000000010",
-				cvn2: "134",
-				date_bill: "20171101",
-				date_repay: "20171125",
-				date_valid: "0125",
-				id: "10",
-				idcard: "370202199011112111",
-				phone: "18700000000",
-				realname: "汉字二",
-				status: "未处理",
-				time_create: "1511923249",
-				time_update: "0",
-				type: "2",
-				user_id: "1000000456"
-			},
-			{
-				bank_id: "1",
-				bank_name: "浦发银行",
-				bankcardnum: "622700000000010",
-				cvn2: "134",
-				date_bill: "20171101",
-				date_repay: "20171125",
-				date_valid: "0125",
-				id: "10",
-				idcard: "370202199011112111",
-				phone: "18700000000",
-				realname: "汉字二",
-				status: "未处理",
-				time_create: "1511923249",
-				time_update: "0",
-				type: "1",
-				user_id: "1000000456"
-			},
+			//{name:'浦发银行',id:110110110,plan:false},
 		];
+		//$scope.creditNew = ipCookie('creditNew')||{
 		$scope.creditNew = {
 			key: '',
 			card_id: '',
-			amount: 30000,
-			amount_principal: 3000,
+			amount: '',
+			amount_principal: '',
 			mode: 1,
-			//date: '20171219,20171220',
 			date: '',
 			//date: '',
 		};
@@ -185,6 +169,7 @@ angular.module("controllers", [])
 		$scope.creditPrev = {
 		};
 		$scope.card_edit = {
+			type:2
 		};
 		$scope.$watch('token', function(newValue,oldValue, scope) {
 			//console.log(newValue,oldValue);
@@ -195,19 +180,23 @@ angular.module("controllers", [])
 		}, true);
 		$scope.matchLogo = function(bankName){
 			switch (bankName) {
-				case '浦发银行': return "pufa";
-				case '工商银行': return "gongshang";
-				case '交通银行': return "jiaotong";
-				case '中信银行': return "zhongxin";
-				case '华夏银行': return "huaxia";
+				//case '浦发银行': return "pufa";
+				//case '工商银行': return "gongshang";
+				//case '交通银行': return "jiaotong";
+				//case '中信银行': return "zhongxin";
+				//case '华夏银行': return "huaxia";
 			}
 		};
 		$scope.ionicHistoryGoBack = function(){
-			$ionicHistory.goBack();
+			//$ionicHistory.goBack();
+			window.history.back();
+			//console.log(
+			//	$window.location
+			//)
 		};
 		$scope.al = function(titleStr){
 			var alertPopup = $ionicPopup.alert({
-				title: titleStr,
+				title: '<div class="text_bold">'+titleStr+'</div>',
 				//template: 'It might taste good'
 				okText: '确定', // String (默认: 'OK')。OK按钮的文字。
 				okType: 'button-default', // String (默认: 'button-positive')。OK按钮的类型。
@@ -230,7 +219,9 @@ angular.module("controllers", [])
 				//$scope.bank_list = response.data.data;
 				console.log(response);
 				$scope.al(response.data.msg);
-				$scope.ionicHistoryGoBack();
+				if(response.data.code){
+					$scope.ionicHistoryGoBack();
+				}
 				//if($scope.checkBackToLog(response.data.msg)){
 				//	$scope.banks = response.data.data.list;
 				//}
@@ -260,7 +251,8 @@ angular.module("controllers", [])
 						//$scope.bank_list = response.data.data;
 						//console.log(response.data.msg);
 						$scope.al(response.data.msg);
-						$state.go('credit');
+						//$state.go('credit');
+						$scope.ionicHistoryGoBack();
 					}, function errorCallback(response) {
 						// 请求失败执行代码
 					});
@@ -272,185 +264,522 @@ angular.module("controllers", [])
 		};
 		$scope.launchCreditNew = function(){
 			//console.log($scope.creditView);
-			$state.go('creditBank',{})
+			var repay_add_confirm = [
+				$scope.api.creditNew,
+				jsonToStr.transform({key:$scope.token,order_id:$scope.creditView.order_id})
+			];
+			var repay_edit_confirm = [
+				'http://47.96.128.18/aiyongka/mobile/index.php/repay/repay_edit_confirm',
+				jsonToStr.transform({
+					key:$scope.token,
+					order_id:$scope.creditView.order_id,
+					repay_id:$scope.creditNew.typeFlag
+				})
+			];
+			var editFlag = repay_add_confirm;
+			if($scope.creditNew.typeFlag){
 
-			//$http({
-			//	method: 'POST',
-			//	url: $scope.api.creditNew,
-			//	data: jsonToStr.transform({key:$scope.token,order_id:$scope.creditView.order_id}),//对提交的数据格式化
-			//	headers: {
-			//		'Accept': '*/*',
-			//		'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-			//	}
-			//}).then(function successCallback(response) {
-			//	//$scope.bank_list = response.data.data;
-			//	console.log(response);
-			//	if(response.data.code == 1){
-			//		$scope.al(response.data.msg);
-			//		//$scope.creditView = response.data.msg;
-			//		//console.log($scope.creditView)
-			//		$state.go('creditBank',{})
-			//	}else console.log(response);
-			//		//if($scope.checkBackToLog(response.data.msg)){
-			//	//	$scope.banks = response.data.data.list;
-			//	//}
-			//}, function errorCallback(response) {
-			//	// 请求失败执行代码
-			//});
+				editFlag = repay_edit_confirm;
+
+			}
+			console.log('选择提交：',editFlag);
+			//return
+			$http({
+				method: 'POST',
+				url: editFlag[0],
+				data: editFlag[1],//对提交的数据格式化
+				headers: {
+					'Accept': '*/*',
+					'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+				}
+			}).then(function successCallback(response) {
+				//$scope.bank_list = response.data.data;
+				console.log(response);
+				if(response.data.code == 1){
+					$scope.al(response.data.msg);
+					//$scope.creditView = response.data.msg;
+					//console.log($scope.creditView)
+					$state.go('creditBank',{cardId:$stateParams.cardId})
+					//$timeout(function(){
+					//
+					//	if(ipCookie('creditNew')){
+					//		console.log('检测到creditNew并删除！2000');
+					//		ipCookie.remove('creditNew');
+					//	}
+					//},2000);
+				}else console.log(response);
+					//if($scope.checkBackToLog(response.data.msg)){
+				//	$scope.banks = response.data.data.list;
+				//}
+			}, function errorCallback(response) {
+				// 请求失败执行代码
+			});
 		};
 		$scope.launchCreditView = function(){
-			$state.go('creditView')
-
-			//$http({
-			//	method: 'POST',
-			//	url: $scope.api.creditView,
-			//	data: jsonToStr.transform($scope.creditNew),//对提交的数据格式化
-			//	headers: {
-			//		'Accept': '*/*',
-			//		'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-			//	}
-			//}).then(function successCallback(response) {
-			//	//$scope.bank_list = response.data.data;
-			//
-			//	if(response.data.code == 1){
-			//		$scope.creditView = response.data.data;
-			//		//console.log($scope.creditView)
-			//		$state.go('creditView')
-			//	}else console.log(response);
-			//		//if($scope.checkBackToLog(response.data.msg)){
-			//	//	$scope.banks = response.data.data.list;
-			//	//}
-			//}, function errorCallback(response) {
-			//	// 请求失败执行代码
-			//});
-		};
-			//日历
-		$scope.dateSelected = [];
-		$scope.dateSelectedRemove = function(removeDate){
-			var tempList = $scope.creditNew.date.split(',');
-			for(var i=0;i<tempList.length;i++){
-				if(tempList[i]==removeDate){
-					tempList.splice(i,1);
-					$scope.creditNew.date=tempList.join(',');
-					return
+			$scope.creditNew.key = $scope.token;
+			$http({
+				method: 'POST',
+				url: $scope.api.creditView,
+				data: jsonToStr.transform($scope.creditNew),//对提交的数据格式化
+				headers: {
+					'Accept': '*/*',
+					'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
 				}
-			}
-		};
-		$scope.dateSelectedCheck = function(newDate){
-			var tempList = $scope.creditNew.date.split(',');
-			if(!$scope.creditNew.date){
-				$scope.creditNew.date+=newDate;
-				return
-			}
-			for(var i=0;i<tempList.length;i++){
-				if(tempList[i]==newDate){
-					tempList.splice(i,1);
-					$scope.creditNew.date=tempList.join(',');
-					return
-				}
-			}
-			tempList.push(newDate);
-			$scope.creditNew.date=tempList.join(',')
-		};
-		var currentDate = new Date();
-		//var date = new Date(currentDate.getFullYear(), currentDate.getMonth(), 23);
-		var date = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
-		$scope.dateToHighlights = $scope.creditNew.date?$scope.creditNew.date.split(','):[];
-		for(var i=0;i<$scope.dateToHighlights.length;i++){
+			}).then(function successCallback(response) {
+				//$scope.bank_list = response.data.data;
+				if(response.data.code == 1){
+					$scope.creditView = response.data.data;
+					console.log($scope.creditView,44444444444)
 
-			var dateStrTemp = $scope.dateToHighlights[i].match(/\d\d/g);
-			//$scope.dateToHighlights[i] = dateStrTemp;
-			if ($scope.dateToHighlights[i] != null) {
-				var dateFormatted = new Date(dateStrTemp[0].toString()+dateStrTemp[1].toString(), (dateStrTemp[2]-1).toString(), dateStrTemp[3].toString());
-				$scope.dateToHighlights[i] =
-
-
-					{
-						date: dateFormatted,
-						//date: 'Fri Nov 17 2017 00:00:00 GMT+0800 (中国标准时间)',
-						color: '#c2e4ff',
-						textColor: '#3391ff'
-					}
-
-			}
-
-
-		}
-		$scope.date = date;
-		$scope.onezoneDatepicker = {
-			date: date,
-			mondayFirst: false,
-			//months: ["Ianuarie", "Februarie", "Martie", "Aprilie", "Mai", "Iunie", "Iulie", "August", "Septembrie", "Octombrie", "Noiembrie", "Decembrie"],
-			months: ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"],
-			//daysOfTheWeek: ["Du", "Lu", "Ma", "Mi", "Jo", "Vi", "Sa"],
-			daysOfTheWeek: ["S", "M", "T", "W", "T", "F", "S"],
-			startDate: new Date(1989, 1, 26),
-			endDate: new Date(2024, 1, 26),
-			disablePastDays: true,
-			disableSwipe: false,
-			disableWeekend: false,
-			disableDates: [
-				new Date(date.getFullYear(), date.getMonth(), 15),
-				new Date(date.getFullYear(), date.getMonth(), 16),
-				new Date(date.getFullYear(), date.getMonth(), 17)
-			],
-			showDatepicker: true,
-			showTodayButton: false,
-			calendarMode: true,//纯日历模式，取消确定取消等按钮
-			hideCancelButton: false,
-			highlights : $scope.dateToHighlights,
-			hideSetButton: false,
-			callback: function(){
-				$scope.dateSelectedCheck($filter('date')($scope.onezoneDatepicker.date,'yyyyMMdd'))
-
-
-				//for(var i=0;i<$scope.onezoneDatepicker.highlights.length;i++){
-				//
-				//	if($scope.onezoneDatepicker.highlights[i].date.toString()==$scope.onezoneDatepicker.date.toString()){
-				//		console.log('已存在高亮！');
-				//		$scope.onezoneDatepicker.highlights.splice(i,1);
-				//
-				//		return
-				//	}else{
-				//
-				//	}
+					//ipCookie('creditNew', $scope.creditNew);
+					//ipCookie.remove('creditNew');
+					//if(ipCookie('creditNew')){
+					//	//$scope.al('已存在用户：'+ipCookie('token'));
+					//	$scope.token = ipCookie('token');
+					//	//$state.go('main.credit')
+					//
+					//	//return
+					//}
+					$state.go('creditView',{cardId:$stateParams.cardId})
+				}else {
+					console.log(response.data);
+					$scope.al(response.data.msg)
+				};
+					//if($scope.checkBackToLog(response.data.msg)){
+				//	$scope.banks = response.data.data.list;
 				//}
-				//
-				//$scope.onezoneDatepicker.highlights.push(
-				//	{
-				//		date: $scope.onezoneDatepicker.date,
-				//		color: '#c2e4ff',
-				//		textColor: '#3391ff'
-				//	}
-				//);
-//————————————————————————————————————————————————————————
-			}
+			}, function errorCallback(response) {
+				// 请求失败执行代码
+			});
 		};
-		$scope.showDatepicker = function () {
-			$scope.onezoneDatepicker.showDatepicker = !$scope.onezoneDatepicker.showDatepicker;
-		};
-		//日历
 		$scope.aboutMode = function(){
-			$scope.al('<div class="text_bold">消费模式<br/><br/> 1-1：还款一次 固定消费一次<br/>1-2：还款一次 随机消费一到二次<br/>1-3：还款一次 随机消费一到三次</div>')
+			$scope.al('<div>消费模式<br/><br/> 1-1：还款一次 固定消费一次<br/>1-2：还款一次 随机消费一到二次<br/>1-3：还款一次 随机消费一到三次</div>')
 		};
 		$scope.switchMode = function(mode){
 			$scope.creditNew.mode = mode;
 		};
+		$scope.backToNew = function(){
+			//		http://47.96.128.18/aiyongka/mobile/index.php/repay/repay_delete
+			$http({
+				method: 'POST',
+				url: 'http://47.96.128.18/aiyongka/mobile/index.php/repay/repay_delete',
+				data: jsonToStr.transform({key:$scope.token,order_id:''}),//对提交的数据格式化
+				headers: {
+					'Accept': '*/*',
+					'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+				}
+			}).then(function successCallback(response) {
+				//$scope.bank_list = response.data.data;
+				console.log(response.data);
+				//console.log($scope.banksWhite);
+			}, function errorCallback(response) {
+				// 请求失败执行代码
+			});
+			//ui-sref="creditNew({'cardId':$stateParams.cardId})"
+			$state.go('creditNew',{cardId:$stateParams.cardId});
+
+			//$timeout(function(){
+			//	$window.location.reload();
+			//},1000);
+			//$window.location.reload();
+		};
+
+		$scope.oneShare = function(){
+
+			$scope.modal ={};
+
+			$ionicModal.fromTemplateUrl('modal.html', {
+				//$ionicModal.fromTemplate('', {
+				scope: $scope
+			}).then(function(modal) {
+				$scope.modal = modal;
+
+				//console.log('down');
+
+				var ua = window.navigator.userAgent.toLowerCase();
+				if(ua.match(/MicroMessenger/i) != 'micromessenger'){
+					console.log('微信分享提示遮罩，启动！');
+				}else{
+					$scope.modal.show();
+				}
+
+
+			})
+		};
+		$scope.closeModal = function() {
+			$scope.modal.hide();
+		};
 		$rootScope.$on('$stateChangeSuccess',function(event,toState,toParams,fromState,fromParams){
 			//console.log(toState.name);
+			$scope.token?void(0):$scope.checkBackToLog('请登录');
+
 			switch (toState.name) {
-				case 'creditEdit':
-				case 'cardManage':
+
+				case 'promotionDetail':
+
+					$http({
+						method: 'POST',
+						url: 'http://47.96.128.18/aiyongka/mobile/index.php/user/recommended_list',
+						data: jsonToStr.transform({key:$scope.token,grade_id:$stateParams.grade_id}),//对提交的数据格式化
+						headers: {
+							'Accept': '*/*',
+							'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+						}
+					}).then(function successCallback(response) {
+						//$scope.bank_list = response.data.data;
+						$scope.promotionDetail = response.data.data;
+						console.log($scope.promotionDetail)
+					}, function errorCallback(response) {
+						// 请求失败执行代码
+					});
+					break;
 				case 'creditPrev':
-				case 'creditNew':
-					//console.log('creditNew');
-				//break;
+
+					$http({
+						method: 'POST',
+						url: 'http://47.96.128.18/aiyongka/mobile/index.php/repay/card_detail',
+
+						data: jsonToStr.transform({key:$scope.token,card_id:$scope.$stateParams.cardId}),//对提交的数据格式化
+						headers: {
+							'Accept': '*/*',
+							'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+						}
+					}).then(function successCallback(response) {
+						//$scope.bank_list = response.data.data;
+						$scope.creditBankPrev = response.data.data;
+						console.log($scope.creditBankPrev)
+					}, function errorCallback(response) {
+						// 请求失败执行代码
+					});
+					$http({
+						method: 'POST',
+						url: $scope.api.creditPrev,
+						data: jsonToStr.transform({key:$scope.token,card_id:$scope.$stateParams.cardId}),//对提交的数据格式化
+						headers: {
+							'Accept': '*/*',
+							'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+						}
+					}).then(function successCallback(response) {
+						//$scope.bank_list = response.data.data;
+						$scope.creditPrev = response.data.data;
+						console.log($scope.creditPrev)
+					}, function errorCallback(response) {
+						// 请求失败执行代码
+					});
+					break;
 				case 'creditBank':
-					//console.log('creditBank');
+
+					$scope.creditNew = {};
+					$scope.creditNew.mode = 1;
+					$scope.creditNew.date = '';
+					console.log('检测到creditNew重置creditNew！');
+					console.log('creditBank');
+					console.log($scope.$stateParams);
+					$http({
+						method: 'POST',
+						url: $scope.api.repay_latest,
+						data: jsonToStr.transform({key:$scope.token,card_id:$scope.$stateParams.cardId}),//对提交的数据格式化
+						headers: {
+							'Accept': '*/*',
+							'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+						}
+					}).then(function successCallback(response) {
+						//$scope.bank_list = response.data.data;
+						//console.log(response.data.data);
+						$scope.creditBank =response.data.data;
+						console.log($scope.creditBank);
+						ipCookie('creditBank', $scope.creditBank);
+
+						//$scope.banksWhite = response.data.data.list;
+						//console.log($scope.banksWhite);
+					}, function errorCallback(response) {
+						// 请求失败执行代码
+					});
+				//console.log($scope.bankIndex);
+				break;
+				case 'creditNew':
 					($scope.bankIndex = $scope.$stateParams.index);
-					//console.log($scope.bankIndex);
-				//break;
-				case 'credit':
+				//http://47.96.128.18/aiyongka/mobile/index.php/repay/card_detail
+
+					//$timeout(function(){
+
+					if($scope.creditNew.typeFlag){
+						$scope.creditNew = {};
+						$scope.creditNew.mode = 1;
+						$scope.creditNew.date = '';
+						console.log('检测到typeFlag重置creditNew！');
+					}
+					if(ipCookie('creditNew')){
+						$scope.creditNew = ipCookie('creditNew')
+						console.log('已调用creditNew并删除！2000');
+						ipCookie.remove('creditNew');
+					}
+					//},2000);
+					console.log($scope.creditNew);
+
+					$http({
+						method: 'POST',
+						//url: $scope.api.repay_latest,
+						url: 'http://47.96.128.18/aiyongka/mobile/index.php/repay/card_detail',
+						data: jsonToStr.transform({key:$scope.token,card_id:$scope.$stateParams.cardId}),//对提交的数据格式化
+						headers: {
+							'Accept': '*/*',
+							'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+						}
+					}).then(function successCallback(response) {
+						//$scope.bank_list = response.data.data;
+						//console.log(response.data);
+
+						$scope.card_detail =response.data.data;
+						//console.log($scope.card_detail);
+						$scope.dateDisable = $scope.card_detail?[($scope.card_detail.date_repay)]:[];
+						for(var i=0;i<$scope.dateDisable.length;i++){
+							var dateStrTemp = $scope.dateDisable[i].match(/\d\d/g);
+							//$scope.dateToHighlights[i] = dateStrTemp;
+							if ($scope.dateDisable[i] != null) {
+								var dateFormatted = new Date(dateStrTemp[0].toString()+dateStrTemp[1].toString(), (dateStrTemp[2]-1).toString(), dateStrTemp[3].toString());
+								$scope.dateDisable[i] =
+									dateFormatted;
+									//[
+									//	new Date(date.getFullYear(), date.getMonth(), 25)
+									//	new Date(date.getFullYear(), date.getMonth(), 26),
+									//	new Date(date.getFullYear(), date.getMonth(), 29)
+									//];
+								//{
+								//	date: dateFormatted
+								}
+						}
+						$scope.dateDisable.push(new Date(date.getFullYear(), date.getMonth(), 27));
+						//console.log($scope.onezoneDatepicker)
+						//$scope.banksWhite = response.data.data.list;
+						//console.log($scope.banksWhite);
+					}, function errorCallback(response) {
+						// 请求失败执行代码
+					});
+					//日历
+					$scope.dateSelected = [];
+					$scope.dateSelectedRemove = function(removeDate){
+						var tempList = $scope.creditNew.date.split(',');
+						for(var i=0;i<tempList.length;i++){
+							if(tempList[i]==removeDate){
+								tempList.splice(i,1);
+								$scope.creditNew.date=tempList.join(',');
+								return
+							}
+						}
+					};
+					var currentDate = new Date();
+					//var date = new Date(currentDate.getFullYear(), currentDate.getMonth(), 23);
+					var date = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
+					$scope.card_detail = '';
+					//$scope.dateDisable =
+					//	[];
+					//[
+					//	new Date(date.getFullYear(), date.getMonth(), 25),
+					//	new Date(date.getFullYear(), date.getMonth(), 26),
+					//	new Date(date.getFullYear(), date.getMonth(), 29)
+					//];
+					$scope.dateToHighlights = $scope.creditNew.date?$scope.creditNew.date.split(','):[];
+					for(var i=0;i<$scope.dateToHighlights.length;i++){
+						var dateStrTemp = $scope.dateToHighlights[i].match(/\d\d/g);
+						//$scope.dateToHighlights[i] = dateStrTemp;
+						if ($scope.dateToHighlights[i] != null) {
+							var dateFormatted = new Date(dateStrTemp[0].toString()+dateStrTemp[1].toString(), (dateStrTemp[2]-1).toString(), dateStrTemp[3].toString());
+							$scope.dateToHighlights[i] =
+							{
+								date: dateFormatted,
+								//date: 'Fri Nov 17 2017 00:00:00 GMT+0800 (中国标准时间)',
+								color: '#c2e4ff',
+								textColor: '#3391ff'
+							}
+						}
+					}
+					$scope.date = date;
+					//$scope.onezoneDatepicker.endDate= new Date(2017, 11, 25);
+
+
+					var dateRepayTemp = $scope.creditBank.card.date_repay.match(/\d\d/g);
+					dateRepayTemp = new Date(dateRepayTemp[0].toString()+dateRepayTemp[1].toString(), (dateRepayTemp[2]-1).toString(), (dateRepayTemp[3]-1).toString());
+
+					$scope.dateSelectedCheck = function(dateYMD,dateOriginal){
+						//console.log(dateOriginal);
+						//console.log($scope.onezoneDatepicker.highlights);
+
+						//$scope.onezoneDatepicker.highlights =[];
+						var tempList = $scope.creditNew.date.split(',');
+						if(!$scope.creditNew.date){
+							$scope.creditNew.date+=dateYMD;
+							$scope.onezoneDatepicker.highlights = [];
+							$scope.onezoneDatepicker.highlights.push(
+								{
+									date: dateOriginal,
+									color: '#c2e4ff',
+									textColor: '#3391ff'
+								}
+							);
+							return
+						}
+						for(var i=0;i<tempList.length;i++){
+							if(tempList[i]==dateYMD){
+								tempList.splice(i,1);
+								$scope.creditNew.date=tempList.join(',');
+
+								for(var j=0;j<$scope.onezoneDatepicker.highlights.length;j++){
+									if($scope.onezoneDatepicker.highlights[j].date.toString()==dateOriginal.toString()){
+										//console.log('已存在高亮！');
+										$scope.onezoneDatepicker.highlights.splice(j,1);
+										break
+									}
+								}
+								return
+							}
+						}
+						tempList.push(dateYMD);
+						$scope.onezoneDatepicker.highlights.push(
+							{
+								date: dateOriginal,
+								color: '#c2e4ff',
+								textColor: '#3391ff'
+							}
+						);
+						$scope.creditNew.date=tempList.join(',')
+					};
+					$scope.onezoneDatepicker = {
+						date: date,
+						mondayFirst: false,
+						//months: ["Ianuarie", "Februarie", "Martie", "Aprilie", "Mai", "Iunie", "Iulie", "August", "Septembrie", "Octombrie", "Noiembrie", "Decembrie"],
+						months: ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"],
+						//daysOfTheWeek: ["Du", "Lu", "Ma", "Mi", "Jo", "Vi", "Sa"],
+						daysOfTheWeek: ["S", "M", "T", "W", "T", "F", "S"],
+						startDate: new Date(1989, 1, 26),
+						//endDate: new Date(2017, 11, 25),
+						endDate: dateRepayTemp,
+						disablePastDays: true,
+						disableSwipe: false,
+						disableWeekend: false,
+						//disableDates: $scope.dateDisable,
+						showDatepicker: true,
+						showTodayButton: false,
+						calendarMode: true,//纯日历模式，取消确定取消等按钮
+						hideCancelButton: false,
+						//highlights : [
+						//	{
+						//		date: new Date(date.getFullYear(), date.getMonth(), 17),
+						//		//date: 'Fri Nov 17 2017 00:00:00 GMT+0800 (中国标准时间)',
+						//		color: '#c2e4ff',
+						//		textColor: '#3391ff'
+						//	}
+						//],
+						highlights : $scope.dateToHighlights,
+						hideSetButton: false,
+						callback: function(date){
+							$scope.dateSelectedCheck($filter('date')($scope.onezoneDatepicker.date,'yyyyMMdd'),date);
+							//console.log($scope.creditNew.date);
+							//var tempList = $scope.creditNew.date.split(',');
+							//console.log(tempList);
+							//for(var i=0;i<tempList.length;i++){
+							//	console.log(tempList[i])
+							//	//if($scope.onezoneDatepicker.highlights[i].date == new Date(date.getFullYear(), date.getMonth(), 19)){
+							//	//	console.log(564654)
+							//	//}
+							//}
+							////$scope.onezoneDatepicker.highlights =[];
+							//$scope.onezoneDatepicker.highlights.push(
+							//	{
+							//		date: $scope.onezoneDatepicker.date,
+							//		//date: new Date(date.getFullYear(), date.getMonth(), 19),
+							//		//date: 'Fri Nov 17 2017 00:00:00 GMT+0800 (中国标准时间)',
+							//		color: '#c2e4ff',
+							//		textColor: '#3391ff'
+							//	}
+							//);
+							//console.log('highlights',$scope.onezoneDatepicker.highlights)
+							//console.log('date',$scope.onezoneDatepicker.date)
+						}
+					};
+					$scope.showDatepicker = function () {
+						$scope.onezoneDatepicker.showDatepicker = !$scope.onezoneDatepicker.showDatepicker;
+					};
+					//日历
+					//$scope.$watch('dateDisable', function(newValue,oldValue, scope) {
+					//	console.log(newValue,oldValue);
+					//	//console.log($scope.addCard.key);
+					//	$scope.onezoneDatepicker.disableDates =newValue;
+					//}, true);
+				break;
+				case 'creditEdit':
+
+					$http({
+						method: 'POST',
+						//url: $scope.api.repay_latest,
+						url: 'http://47.96.128.18/aiyongka/mobile/index.php/repay/card_detail',
+						data: jsonToStr.transform({key:$scope.token,card_id:$scope.$stateParams.cardId}),//对提交的数据格式化
+						headers: {
+							'Accept': '*/*',
+							'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+						}
+					}).then(function successCallback(response) {
+						//$scope.bank_list = response.data.data;
+						//console.log(response.data);
+
+						$http({
+							method: 'POST',
+							url: $scope.api.bank_list,
+						}).then(function successCallback(response) {
+							//console.log(response)
+							$scope.bank_list = response.data.data;
+							//console.log($scope.bank_list)
+						}, function errorCallback(response) {
+							// 请求失败执行代码
+						});
+
+
+						$scope.card_detail =response.data.data;
+						console.log($scope.card_detail);
+
+						$scope.card_edit.card_id = $scope.card_detail.id;
+						//$scope.card_edit.type = $scope.card_detail.type;
+						$scope.card_edit.phone = $scope.card_detail.phone;
+						$scope.card_edit.bankcardnum = $scope.card_detail.bankcardnum;
+						$scope.card_edit.bank_id = $scope.card_detail.bank_id;
+						$scope.card_edit.cvn2 = $scope.card_detail.cvn2;
+						$scope.card_edit.date_valid = $scope.card_detail.date_valid;
+
+
+						$scope.card_edit.date_bill = ($filter('last2')($scope.card_detail.date_bill));
+						$scope.card_edit.date_repay = ($filter('last2')($scope.card_detail.date_repay));
+
+						console.log($scope.card_detail)
+
+					}, function errorCallback(response) {
+						// 请求失败执行代码
+					});
+					break;
+
+				case 'cardManage':
+					//break;
+				case 'main.credit':
+					//———————————————白底logo—————————————————
+					$http({
+						method: 'POST',
+						url: $scope.api.credit,
+						data: jsonToStr.transform({key:$scope.token,type:2}),//对提交的数据格式化
+						headers: {
+							'Accept': '*/*',
+							'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+						}
+					}).then(function successCallback(response) {
+						//$scope.bank_list = response.data.data;
+						console.log(response.data);
+						if(response.data.code==1){
+							$scope.banksWhite = response.data.data.list;
+
+						}
+						//console.log($scope.banksWhite);
+					}, function errorCallback(response) {
+						// 请求失败执行代码
+					});
+					//———————————————白底logo—————————————————
 					//console.log($state);
 					$http({
 						method: 'POST',
@@ -463,8 +792,8 @@ angular.module("controllers", [])
 					}).then(function successCallback(response) {
 						//$scope.bank_list = response.data.data;
 						//console.log(response)
-						if(true){
-							//$scope.banks = response.data.data.list;
+						if($scope.checkBackToLog(response.data.msg)){
+							$scope.banks = response.data.data.list;
 							//console.log($scope.banks);
 							if($scope.banks[$scope.bankIndex]){
 								//$scope.card_edit = $scope.banks[$scope.bankIndex];
@@ -505,7 +834,7 @@ angular.module("controllers", [])
 								});
 								$http({
 									method: 'POST',
-									url: 'http://www.aiyongka.cn/mobile/index.php/repay/repay_latest',
+									url: 'http://47.96.128.18/aiyongka/mobile/index.php/repay/repay_latest',
 									data: jsonToStr.transform({key:$scope.token,card_id:$scope.banks[$scope.bankIndex].id}),//对提交的数据格式化
 									headers: {
 										'Accept': '*/*',
@@ -533,12 +862,85 @@ angular.module("controllers", [])
 			}
 		});
 		$rootScope.$on('$stateChangeSuccess',function(event,toState,toParams,fromState,fromParams){
-			//console.log(toState.name);
+			console.log(toState.name);
+			($ionicNavBarDelegate.showBar(false));
+			$scope.stateName = $state.current.name;
 			//console.log($scope.banks);
 			//console.log($scope.bankIndex);
+			$scope.regVerifyFillRequired = '';
+			$scope.fillRequired = '';
 			switch (toState.name) {
+				case 'promotionCenter':
+					$http({
+						method: 'POST',
+						url: 'http://47.96.128.18/aiyongka/mobile/index.php/user/count_recommended',
+						data: jsonToStr.transform({key:$scope.token}),//对提交的数据格式化
+						headers: {
+							'Accept': '*/*',
+							'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+						}
+					}).then(function successCallback(response) {
+						$scope.count_recommended = response.data.data;
+						console.log($scope.count_recommended);
+
+						$scope.promotionBarChartsData = [
+							{value:$scope.count_recommended.active, name:''},
+							{value:$scope.count_recommended.total,name:''} //Berlin
+						];
+					}, function errorCallback(response) {
+						// 请求失败执行代码
+					});
+					break;
+				case 'reg':
+					if((window.location.href.match(/refer_phone.*($|\&)/))){
+						//console.log(window.location.href.match(/refer_phone.*?($|\&)/));
+						$scope.reg.refer_phone = (window.location.href.match(/refer_phone.*?($|\&)/)[0].match(/\d+/))?(window.location.href.match(/refer_phone.*?($|\&)/)[0].match(/\d+/)):'';
+					}
+				break;
+				//case 'promotionCenter':
+				case 'main.promotion':
+				//break;
+				case 'main.my':
+					$scope.checkIdCer = function(){
+						if($scope.my.status_verify > 2){
+							$scope.al('实名认证已通过！请勿重复操作！')
+						}else{
+							$state.go('idCer')
+						}
+					};
+					$http({
+						method: 'POST',
+						url: $scope.api.userInfo,
+						data: jsonToStr.transform({key:$scope.token}),//对提交的数据格式化
+						headers: {
+							'Accept': '*/*',
+							'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+						}
+					}).then(function successCallback(response) {
+						console.log(response.data);
+						$scope.my = response.data.data;
+						//console.log($scope.my)
+					}, function errorCallback(response) {
+						// 请求失败执行代码
+					});
+				break;
 				case 'addCard':
 					console.log('addCard');
+					$http({
+						method: 'POST',
+						url: $scope.api.userInfo,
+						data: jsonToStr.transform({key:$scope.token}),//对提交的数据格式化
+						headers: {
+							'Accept': '*/*',
+							'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+						}
+					}).then(function successCallback(response) {
+						//console.log(response.data)
+						$scope.my = response.data.data;
+						console.log($scope.my)
+					}, function errorCallback(response) {
+						// 请求失败执行代码
+					});
 				case 'idCer':
 					console.log('idCer');
 					$http({
@@ -617,7 +1019,11 @@ angular.module("controllers", [])
 			}).then(function successCallback(response) {
 				//$scope.get_areaCity = response.data.data.list;
 				//console.log($scope.get_areaCity)
-				console.log(response.data)
+				console.log(response.data);
+				$scope.al(response.data.msg)
+				if(response.data.code){
+					$scope.ionicHistoryGoBack();
+				}
 			}, function errorCallback(response) {
 				// 请求失败执行代码
 			});
@@ -626,9 +1032,10 @@ angular.module("controllers", [])
 			$scope.verifyPsw.phone =  $scope.changePsw.phone;
 			for(x in $scope.verifyPsw){
 				if($scope.verifyPsw[x]){
-					console.log($scope.verifyPsw,'yes')
+					//console.log($scope.verifyPsw,'yes')
 				}else{
-					console.log($scope.verifyPsw,'noooo');
+					//console.log($scope.verifyPsw,'noooo');
+					$scope.regVerifyFillRequired = 'fillRequired';
 					return
 				}
 			}
@@ -642,13 +1049,38 @@ angular.module("controllers", [])
 				}
 			}).then(function successCallback(response) {
 				//$scope.names = response.data.sites;
-				console.log(response.data)
+				console.log(response.data);
+				$scope.al(response.data.msg);
+				if(response.data.code){
+					$scope.verifySta = 60;
+					$scope.verifyStaDisabled = true;
+					var verifyCount = function(){
+						if($scope.verifySta==0||!$scope.verifySta){
+							$scope.verifySta = '再次发送';
+							$scope.verifyStaDisabled = false;
+							return
+						}
+						$timeout(function(){
+							$scope.verifySta--;
+							//console.log($scope.verifySta)
+							verifyCount();
+						},1000);
+					};
+					verifyCount();
+				}
 			}, function errorCallback(response) {
 				// 请求失败执行代码
 			});
 		};
 		$scope.launchChangePsw = function(){
-			console.log($scope)
+			for(x in $scope.changePsw){
+				//console.log($scope.login[x]?1:0)
+				if(!$scope.changePsw[x] && x != 'refer_phone'){
+					console.log('缺少字段：',x);
+					$scope.fillRequired = 'fillRequired';
+					return
+				}
+			}
 			$http({
 				method: 'POST',
 				url: $scope.api.changePsw,
@@ -659,7 +1091,11 @@ angular.module("controllers", [])
 				}
 			}).then(function successCallback(response) {
 				//$scope.names = response.data.sites;
-				console.log(response.data)
+				console.log(response.data);
+				$scope.al(response.data.msg);
+				if(response.data.code){
+					$scope.ionicHistoryGoBack();
+				}
 				//alert(response.data.msg)
 			}, function errorCallback(response) {
 				// 请求失败执行代码
@@ -700,11 +1136,13 @@ angular.module("controllers", [])
 				}
 			}
 			//ipCookie.remove('token');
-			if(ipCookie('token')){
-				$scope.al('已存在用户：'+ipCookie('token'));
-				$scope.token = ipCookie('token');
-				return
-			}
+			//if(ipCookie('token')){
+			//	//$scope.al('已存在用户：'+ipCookie('token'));
+			//	$scope.token = ipCookie('token');
+			//	//$state.go('main.credit')
+			//
+			//	//return
+			//}
 			$http({
 				method: 'POST',
 				url: $scope.api.login,
@@ -720,7 +1158,8 @@ angular.module("controllers", [])
 					//$scope.al(response.data.data.token);
 					$scope.token = response.data.data.token;
 					ipCookie('token', $scope.token);
-					$scope.ionicHistoryGoBack();
+					//$scope.ionicHistoryGoBack();
+					$state.go('main.credit')
 				}else{
 					$scope.al(response.data.msg);
 				}
@@ -733,12 +1172,14 @@ angular.module("controllers", [])
 			$scope.verify.phone =  $scope.reg.phone;
 			for(x in $scope.verify){
 				if($scope.verify[x]){
-					console.log($scope.verify,'yes')
+					//console.log($scope.verify,'yes')
 				}else{
-					console.log($scope.verify,'noooo');
+					//console.log($scope.verify,'noooo');
+					$scope.regVerifyFillRequired = 'fillRequired';
 					return
 				}
 			}
+			//console.log(222)
 			$http({
 				method: 'POST',
 				url: $scope.api.verify,
@@ -750,11 +1191,37 @@ angular.module("controllers", [])
 			}).then(function successCallback(response) {
 				//$scope.names = response.data.sites;
 				console.log(response.data)
+				$scope.al(response.data.msg);
+				if(response.data.code){
+					$scope.verifySta = 60;
+					$scope.verifyStaDisabled = true;
+					var verifyCount = function(){
+						if($scope.verifySta==0||!$scope.verifySta){
+							$scope.verifySta = '再次发送';
+							$scope.verifyStaDisabled = false;
+							return
+						}
+						$timeout(function(){
+							$scope.verifySta--;
+							//console.log($scope.verifySta)
+							verifyCount();
+						},1000);
+					};
+					verifyCount();
+				}
 			}, function errorCallback(response) {
 				// 请求失败执行代码
 			});
 		};
 		$scope.launchReg = function(){
+			for(x in $scope.reg){
+				//console.log($scope.login[x]?1:0)
+				if(!$scope.reg[x] && x != 'refer_phone'){
+					console.log('缺少字段：',x);
+					$scope.fillRequired = 'fillRequired';
+					return
+				}
+			}
 			$http({
 				method: 'POST',
 				url: $scope.api.reg,
@@ -766,6 +1233,15 @@ angular.module("controllers", [])
 			}).then(function successCallback(response) {
 				//$scope.names = response.data.sites;
 				console.log(response.data)
+				$scope.al(response.data.msg);
+				if(response.data.code){
+					//$scope.al(response.data.data.token);
+					//$scope.token = response.data.data.token;
+					//ipCookie('token', $scope.token);
+					//$scope.ionicHistoryGoBack();
+					$state.go('login')
+				}
+				$scope.fillRequired = '';
 			}, function errorCallback(response) {
 				// 请求失败执行代码
 			});

@@ -6,10 +6,32 @@
 		<!--<div bank-name='$stateParams.name' card-directive></div>-->
 		<!--<div plan-directive></div>-->
 
-		<div bank='banks[bankIndex]' card-directive></div>
-		<!--<div>{{bankIndex=$stateParams.index}}</div>-->
+		<!--<div bank='creditPrev' card-directive></div>-->
+		<div class="creditCard box_shadow">
+			<div class="cardInfo a bg_blue">
+				<img ng-src="{{creditBankPrev.bank_icon}}" alt=""/>
+				<span class="a">{{creditBankPrev.bank_name}} | 尾号{{creditBankPrev.bankcardnum|last4}}</span>
+				<span class="b">{{creditBankPrev.realname}}</span>
+			</div>
+			<div class="cardInfo b">
+				<table>
+					<tr>
+						<th ng-if="false">计划额度</th>
+						<th>账单日</th>
+						<th>还款日</th>
+					</tr>
+					<tr>
+						<td ng-if="false">3000</td>
+						<td>{{creditBankPrev.date_bill}}</td>
+						<td>{{creditBankPrev.date_repay}}</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<!--<div>{{creditPrev}}</div>-->
 
-		<div ng-repeat="x in creditPrev.list" bankid='banks[bankIndex].id' index='bankIndex' plan="{repay:x}" plan-directive></div>
+		<div ng-repeat="x in creditPrev.list" bankid='$stateParams.cardId' index='bankIndex' plan="{repay:x}" plan-directive></div>
 
+		<!--<div ng-repeat="x in creditPrev.list">{{x}}</div>-->
 	</ion-content>
 </ion-view>

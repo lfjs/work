@@ -1,7 +1,14 @@
 /**
  * Created by Administrator on 2017/6/27.
  */
-angular.module('ionicApp', ['ionic','ui.router','directives','controllers', 'onezone-datepicker','ipCookie'])
+angular.module('ionicApp', ['ionic','ui.router','directives','controllers', 'onezone-datepicker','ipCookie','monospaced.qrcode'])
+
+	.filter('last2', function() {
+		return function(text) {
+			//console.log(text?text.match(/....$/)[0]:'0000');
+			return text?text.match(/..$/)[0]:'00';
+		}
+	})
 	.filter('last4', function() {
 		return function(text) {
 			//console.log(text?text.match(/....$/)[0]:'0000');
@@ -54,7 +61,7 @@ angular.module('ionicApp', ['ionic','ui.router','directives','controllers', 'one
 				templateUrl: 'main.html'
 			})
 			.state('promotionDetail', {
-				url: '/main/promotionDetail',
+				url: '/main/promotionDetail/:grade_id',
 				templateUrl: 'promotionDetail.html'
 			})
 			.state('cardManage', {
@@ -65,12 +72,16 @@ angular.module('ionicApp', ['ionic','ui.router','directives','controllers', 'one
 				url: '/main/idCer',
 				templateUrl: 'idCer.html'
 			})
-			.state('my', {
-				url: '/main/my',
+			.state('main.my', {
+				url: '/my',
 				templateUrl: 'my.html'
 			})
-			.state('promotion', {
-				url: '/main/promotion',
+			.state('promotionCenter', {
+				url: '/main/promotion/promotionCenter',
+				templateUrl: 'promotionCenter.html'
+			})
+			.state('main.promotion', {
+				url: '/promotion',
 				templateUrl: 'promotion.html'
 			})
 			.state('changePsw', {
@@ -78,15 +89,15 @@ angular.module('ionicApp', ['ionic','ui.router','directives','controllers', 'one
 				templateUrl: 'changePsw.html'
 			})
 			.state('reg', {
-				url: '/main/reg',
+				url: '/reg',
 				templateUrl: 'reg.html'
 			})
 			.state('login', {
-				url: '/main/login',
+				url: '/login',
 				templateUrl: 'login.html'
 			})
-			.state('credit', {
-				url: '/main/credit',
+			.state('main.credit', {
+				url: '/credit',
 				templateUrl: 'credit.html'
 			})
 			.state('addCard', {
@@ -102,7 +113,7 @@ angular.module('ionicApp', ['ionic','ui.router','directives','controllers', 'one
 				templateUrl: 'creditPrev.html'
 			})
 			.state('creditView', {
-				url: '/main/credit/creditBank/creditNew/creditView/:index',
+				url: '/main/credit/creditBank/creditNew/creditView/:cardId/:index',
 				templateUrl: 'creditView.html'
 			})
 			.state('creditNew', {
@@ -114,5 +125,5 @@ angular.module('ionicApp', ['ionic','ui.router','directives','controllers', 'one
 				templateUrl: 'creditBank.html'
 			});
 		// if none of the above states are matched, use this as the fallback
-		$urlRouterProvider.otherwise('/main');
+		$urlRouterProvider.otherwise('/main/credit');
 	});

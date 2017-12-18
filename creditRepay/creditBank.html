@@ -1,22 +1,44 @@
 
 
-<ion-view view-title="{{banks[bankIndex].bank_name}}">
+<ion-view view-title="{{creditBank.card.bank_name}}">
 	<ion-content class="padding bg_f4">
 
 
-		<div bank='banks[bankIndex]' card-directive></div>
+		<!--<div bank='creditBank.card' card-directive></div>-->
 		<!--<div>{{bankIndex=$stateParams.index}}</div>-->
+		<div class="creditCard box_shadow">
+			<div class="cardInfo a bg_blue">
+				<img ng-src="{{creditBank.card.bank_icon}}" alt=""/>
+				<span class="a">{{creditBank.card.bank_name}} | 尾号{{creditBank.card.bankcardnum|last4}}</span>
+				<span class="b">{{creditBank.card.realname|hideMiddleName}}</span>
+			</div>
+			<div class="cardInfo b">
+				<table>
+					<tr>
+						<th ng-if="false">计划额度</th>
+						<th>账单日</th>
+						<th>还款日</th>
+					</tr>
+					<tr>
+						<td ng-if="false">3000</td>
+						<td>{{creditBank.card.date_bill}}</td>
+						<td>{{creditBank.card.date_repay}}</td>
+					</tr>
+				</table>
+			</div>
+		</div>
 
-		<div bankid='banks[bankIndex].id' index='bankIndex' plan="repay_latest" token="token" plan-directive></div>
+		<!--<div bankid='banks[bankIndex].id' index='bankIndex' plan="repay_latest" token="token" plan-directive></div>-->
+		<div bankid='creditBank.card.id' creditnew='creditNew' plan="creditBank" token="token" plan-directive></div>
 
 		<br/><br/><br/><br/><br/><br/>
 	</ion-content>
 	<div class="tabs tabs-icon-top">
-		<a class="tab-item" ui-sref="creditPrev({'cardId':banks[bankIndex].id,'index':bankIndex})">
+		<a class="tab-item" ui-sref="creditPrev({'cardId':$stateParams.cardId,'index':bankIndex})">
 			<img src="img/wangqijihua.png" alt=""/>
 			往期计划
 		</a>
-		<a class="tab-item" ui-sref="creditEdit({'cardId':banks[bankIndex].id,'index':bankIndex})">
+		<a class="tab-item" ui-sref="creditEdit({'cardId':$stateParams.cardId,'index':bankIndex})">
 			<img src="img/kapianxiugai.png" alt=""/>
 			卡片修改
 		</a>

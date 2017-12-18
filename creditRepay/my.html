@@ -1,11 +1,13 @@
 <ion-view view-title="我的">
 	<ion-content class=" bg_f4">
-		<div class="bg_blue" style="background-color: #2597ff;padding: 10px;padding-top: 50px;">
-			<img style="margin: 0 auto;display: block;border-radius: 5000px;width: 70px;border: 2px solid #fff;margin-bottom: 25px;" src="img/1.jpg" alt=""/>
-			<p style="color: white;text-align: center;font-size: 130%;margin-bottom: 22px;">阿斯顿</p>
+		<div class="bg_blue" style="background-color: #2597ff;position: relative">
+			<img ng-src="{{'img/bg_'+my.grade_id+'.png'}}" style="width: 100%;display: block" alt=""/>
+			<!--<img ng-src="{{'img/bg_'+2+'.png'}}" style="width: 100%;display: block" alt=""/>-->
+			<div style="color: white;text-align: center;font-size: 130%;position: absolute;bottom: 62px;width: 100%;">{{my.realname||'用户名'}}</div>
 		</div>
 		<div style="padding: 17px;background-color: white;" class="table text-center">
-			<div class="cell" ui-sref="idCer">
+			<!--<div class="cell" ui-sref="idCer">-->
+			<div class="cell" ng-click="checkIdCer()">
 				<img style="width: 40px;margin-bottom: 10px" src="img/wode_smrz.png" alt=""/>
 				<div>实名认证</div>
 			</div>
@@ -45,18 +47,4 @@
 		<br/>
 		<br/>
 	</ion-content>
-	<div style="padding: 7px" class="tabs tabs-icon-top">
-		<a class="tab-item " ui-sref="credit">
-			<img style="width: 26px" src="img/shouye.png" alt=""/>
-			首页
-		</a>
-		<a class="tab-item " ui-sref="promotion">
-			<img style="width: 26px" src="img/tuiguang.png" alt=""/>
-			推广
-		</a>
-		<a class="tab-item active" ui-sref="my">
-			<img style="width: 26px" src="img/wode_s.png" alt=""/>
-			我的
-		</a>
-	</div>
 </ion-view>

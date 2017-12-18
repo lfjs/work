@@ -77,8 +77,12 @@ i.icon svg{
 	background-repeat: no-repeat;
 	background-position: 0 100%;
 }
+.paddingTop{
+	padding-top: 44px;
+}
 .padding{
 	padding: 16px;
+	padding-top: 60px;
 }
 .action-sheet-options{
 	background-color: #fff;
@@ -178,7 +182,7 @@ hr{
 	 /*font-smoothing: antialiased;*/
 	 position: absolute;
 	 top: 50%;
-	 right: 11px;
+	 right: 20px;
 	 display: block;
 	 margin-top: -8px;
 	 color: #ccc;
@@ -191,6 +195,16 @@ hr{
 	 font-family: 'Ionicons';
 	 line-height: 1;
 	 /*speak: none; */
+}
+canvas.qrcode{
+
+	display: block;
+	margin: 0 auto;
+	border: 2px solid #3392ff;
+	padding: 7px;
+	border-radius: 6px;
+	margin-bottom: 22px;
+
 }
 .popup{
 	border-radius: 12px!important;

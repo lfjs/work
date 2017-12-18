@@ -6,25 +6,12 @@
 		<div style="margin: 20px;position: relative" class="creditHead text_bold text-center">我的信用卡列表</div>
 		<button ui-sref="addCard" style="margin: 0 auto;display: block;min-width: 120px;color: #359efe;border-color: #359efe;" class=" button button-light" >添加信用卡</button>
 
-		<div class="padding">
-			<div ng-repeat="bank in banks" bank='bank'
+		<!--<div>{{ua}}</div>-->
+		<div class="padding" style="padding-top: 16px">
+			<div ng-repeat="bank in banksWhite" bank='bank'
 			     ui-sref="creditBank({'cardId':bank.id,'index':$index})" card-directive></div>
 		</div>
 
 		<br/><br/><br/><br/>
 	</ion-content>
-	<div style="padding: 7px" class="tabs tabs-icon-top">
-		<a class="tab-item active" ui-sref="credit">
-			<img style="width: 26px" src="img/shouye_s.png" alt=""/>
-			首页
-		</a>
-		<a class="tab-item" ui-sref="promotion">
-			<img style="width: 26px" src="img/tuiguang.png" alt=""/>
-			推广
-		</a>
-		<a class="tab-item" ui-sref="my">
-			<img style="width: 26px" src="img/wode.png" alt=""/>
-			我的
-		</a>
-	</div>
 </ion-view>
