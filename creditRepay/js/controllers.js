@@ -1209,7 +1209,7 @@ angular.module("controllers", [])
 			//	//return
 			//}
 			$http({
-				method: 'POST',
+				method: 'GET',
 				url: $scope.api.login,
 				data: jsonToStr.transform($scope.login),//对提交的数据格式化
 				headers: {
