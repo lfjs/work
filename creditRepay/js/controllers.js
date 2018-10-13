@@ -4,6 +4,7 @@ angular.module("controllers", [])
 		$scope.checkBackToLog = function(msg){
 			if(msg.indexOf("请登录")+1){
 				$state.go('login');
+				console.log('通过checkBackToLog跳转');
 				return false
 			}else return true
 		};
@@ -329,7 +330,13 @@ angular.module("controllers", [])
 			$scope.modal.hide();
 		};
 		$rootScope.$on('$stateChangeSuccess',function(event,toState,toParams,fromState,fromParams){
-			$scope.token?void(0):$scope.checkBackToLog('请登录');
+			if($scope.token || $scope.stateName == 'login'){
+
+			}else{
+				console.log('没有token页面：'+$scope.stateName);
+				$scope.checkBackToLog('请登录')
+			}
+			//$scope.token?void(0):$scope.checkBackToLog('请登录');
 			switch (toState.name) {
 				case 'creditView':
 					$http({
