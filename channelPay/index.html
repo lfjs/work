@@ -191,7 +191,7 @@
 		var ifr = document.createElement('iframe');
 		ifr.src =window.location.href;
 		ifr.frameBorder = 0;//FF、IE隐藏边框有效
-		ifr.width = "400px";
+		ifr.width = (document.body.clientHeight/16)*9+"px";
 		ifr.height = "99%";
 //		ifr.scrolling = "no";
 		document.body.innerHTML = '';
