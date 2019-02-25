@@ -186,6 +186,19 @@
 			FastClick.attach(document.body);
 		}, false);
 	}
+	var r = document.body.clientWidth/document.body.clientHeight;
+	if(r>1){
+		var ifr = document.createElement('iframe');
+		ifr.src =window.location.href;
+		ifr.frameBorder = 0;//FF、IE隐藏边框有效
+		ifr.width = "400px";
+		ifr.height = "99%";
+//		ifr.scrolling = "no";
+		document.body.innerHTML = '';
+		document.body.appendChild(ifr);
+		document.body.style.textAlign = 'center';
+		document.body.style.backgroundColor = 'gray';
+	}
 </script>
 <script src="js.js"></script>
 </body>

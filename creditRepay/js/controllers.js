@@ -22,8 +22,8 @@ angular.module("controllers", [])
 			ipCookie('creditBank')||
 			{};
 		$scope.ls = function() {
-			console.log($scope)
-			console.log($stateParams)
+			//console.log($scope)
+			//console.log($stateParams)
 		};
 		$scope.ls();
 		$scope.api = {
