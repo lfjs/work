@@ -25,6 +25,13 @@ $RECYCLE.BIN/
 # =========================
 
 .DS_Store
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+/test/unit/coverage/
+/test/e2e/reports/
+selenium-debug.log
 .AppleDouble
 .LSOverride
 
@@ -46,3 +53,9 @@ Network Trash Folder
 Temporary Items
 .apdisk
 .idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.rar
