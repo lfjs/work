@@ -1,0 +1,41 @@
+{ 
+  "respcod" : "01", 
+  "data" : { 
+      "size" : "1", 
+      "cardType" : "02", 
+      "orderList" : { 
+      "0" : { 
+            "entryStationName" : "地铁大厦", 
+            "entryDate" : "20190416143438", 
+            "exitStationName" : "苗岭路", 
+            "exitDate" : "20190416151629", 
+            "payAmount" : "400", 
+            "orderExpType" : "0", 
+            "tradeOrderNo" : "04201904161516293648", 
+            "payTradeOrderNo" : "4200000310201904163345841171", 
+            "payOrderNoDate" : "20190416151636", 
+            "payChannelCode" : "04", 
+            "debitRequestResult" : "0", 
+            "discountFee" : { 
+            } 
+      }, 
+      "1" : { 
+            "entryStationName" : "地铁大厦", 
+            "entryDate" : "20190416143438", 
+            "exitStationName" : "苗岭路", 
+            "exitDate" : "20190416151629", 
+            "payAmount" : "800", 
+            "orderExpType" : "0", 
+            "tradeOrderNo" : "04201904161516293648", 
+            "payTradeOrderNo" : "4200000310201904163345841171", 
+            "payOrderNoDate" : "20190416151636", 
+            "payChannelCode" : "04", 
+            "debitRequestResult" : "0", 
+            "discountFee" : { 
+            } 
+      }
+      }, 
+       "page" : "1" 
+  }, 
+  "respmsg" : "查询成功" 
+}
