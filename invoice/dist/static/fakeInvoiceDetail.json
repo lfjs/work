@@ -1,0 +1,27 @@
+{
+      "data": {
+          "count": 1,
+          "invoiceMain": {
+              "address": "地址",
+              "amount": 23.5000,
+              "bank": "银行",
+              "bankNo": "银行11",
+              "contents": "contens",
+              "createDate": 1555679962000,
+              "email": "email@126.com",
+              "headType": "heandtype",
+              "id": 6,
+              "identiNo": "setIdentiNo",
+              "invoiceDate": 0,
+              "invoiceHead": "setInvoiceHead",
+              "invoiceNo": "125",
+              "invoiceType": "setInvoiceType",
+              "mark": "setMark",
+              "phone": "12345678",
+              "userid": "111",
+              "writeoffStatus": "0"
+          }
+      },
+      "respcod": "01",
+      "respmsg": "显示已开电子发票详情"
+  }
